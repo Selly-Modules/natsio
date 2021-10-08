@@ -7,5 +7,6 @@ require (
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/nats-io/nats-server/v2 v2.6.1 // indirect
 	github.com/nats-io/nats.go v1.13.0
+	github.com/thoas/go-funk v0.9.1
 	google.golang.org/protobuf v1.27.1 // indirect
 )
