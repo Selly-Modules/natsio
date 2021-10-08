@@ -7,6 +7,11 @@ import (
 	"github.com/nats-io/nats.go"
 )
 
+// GetStreamInfo ...
+func GetStreamInfo(name string) (*nats.StreamInfo, error) {
+	return natsJS.StreamInfo(name)
+}
+
 // AddStream add new stream, with default config
 func AddStream(name string, subjects []string) error {
 	// Get info about the stream
