@@ -13,15 +13,18 @@ func GetStreamInfo(name string) (*nats.StreamInfo, error) {
 }
 
 // AddStream add new stream, with default config
+// Due to subject must have a unique name, subject name will be combined with stream name
+// E.g: stream name is "DEMO", subject name is "Subject-1", so final name in NATS will be: DEMO.Subject-1
 func AddStream(name string, subjects []string) error {
 	// Get info about the stream
 	stream, _ := GetStreamInfo(name)
+
 	// If stream not found, create new
 	if stream == nil {
+		subjectNames := generateSubjectNames(name, subjects)
 		_, err := natsJS.AddStream(&nats.StreamConfig{
 			Name:     name,
-			Subjects: subjects,
-			Storage:  nats.FileStorage,
+			Subjects: subjectNames,
 		})
 		if err != nil {
 			msg := fmt.Sprintf("add stream error: %s", err.Error())
@@ -51,7 +54,8 @@ func AddStreamSubjects(name string, subjects []string) error {
 	}
 
 	// Merge current and new subjects
-	newSubjects := mergeAndUniqueArrayStrings(subjects, stream.Config.Subjects)
+	subjectNames := generateSubjectNames(name, subjects)
+	newSubjects := mergeAndUniqueArrayStrings(subjectNames, stream.Config.Subjects)
 
 	_, err := natsJS.UpdateStream(&nats.StreamConfig{
 		Name:     name,
