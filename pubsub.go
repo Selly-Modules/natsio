@@ -22,13 +22,13 @@ func Publish(stream, subject string, data interface{}) error {
 }
 
 // Subscribe ...
-func Subscribe(stream, subject string, cb nats.MsgHandler) error {
+func Subscribe(stream, subject string, cb nats.MsgHandler) (*nats.Subscription, error) {
 	channel := combineStreamAndSubjectName(stream, subject)
 
-	_, err := natsJS.Subscribe(channel, cb)
+	sub, err := natsJS.Subscribe(channel, cb)
 	if err != nil {
 		msg := fmt.Sprintf("subscribe subject %s error: %s", channel, err.Error())
-		return errors.New(msg)
+		return nil, errors.New(msg)
 	}
-	return nil
+	return sub, nil
 }
