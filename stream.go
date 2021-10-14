@@ -23,8 +23,13 @@ func AddStream(name string, subjects []string) error {
 	if stream == nil {
 		subjectNames := generateSubjectNames(name, subjects)
 		_, err := natsJS.AddStream(&nats.StreamConfig{
-			Name:     name,
-			Subjects: subjectNames,
+			Name:         name,
+			Subjects:     subjectNames,
+			Retention:    nats.WorkQueuePolicy,
+			MaxConsumers: -1,
+			MaxMsgSize:   -1,
+			MaxMsgs:      -1,
+			NoAck:        false,
 		})
 		if err != nil {
 			msg := fmt.Sprintf("add stream error: %s", err.Error())
