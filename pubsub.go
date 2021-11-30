@@ -1,7 +1,6 @@
 package natsio
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 
@@ -9,11 +8,10 @@ import (
 )
 
 // Publish ...
-func Publish(stream, subject string, data interface{}) error {
+func Publish(stream, subject string, payload []byte) error {
 	channel := combineStreamAndSubjectName(stream, subject)
 
-	b, _ := json.Marshal(data)
-	_, err := natsJS.PublishAsync(channel, b)
+	_, err := natsJS.PublishAsync(channel, payload)
 	if err != nil {
 		msg := fmt.Sprintf("publish message to subject %s error: %s", channel, err.Error())
 		return errors.New(msg)
