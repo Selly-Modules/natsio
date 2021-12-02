@@ -19,6 +19,18 @@ func Publish(stream, subject string, payload []byte) error {
 	return nil
 }
 
+// PublishWithResponse ...
+func PublishWithResponse(stream, subject string, payload []byte) (*nats.Msg, error) {
+	channel := combineStreamAndSubjectName(stream, subject)
+
+	resp, err := natsJS.PublishAsync(channel, payload)
+	if err != nil {
+		msg := fmt.Sprintf("publish message to subject %s error: %s", channel, err.Error())
+		return nil, errors.New(msg)
+	}
+	return resp.Msg(), nil
+}
+
 // Subscribe ...
 func Subscribe(stream, subject string, cb nats.MsgHandler) (*nats.Subscription, error) {
 	channel := combineStreamAndSubjectName(stream, subject)
