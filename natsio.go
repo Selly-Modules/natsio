@@ -55,6 +55,11 @@ func Connect(cfg Config) error {
 	return nil
 }
 
+// GetClient ...
+func GetClient() *nats.Conn {
+	return natsClient
+}
+
 // GetJetStream ...
 func GetJetStream() nats.JetStreamContext {
 	return natsJS
