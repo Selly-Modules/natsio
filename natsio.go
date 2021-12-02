@@ -8,9 +8,19 @@ import (
 	"github.com/nats-io/nats.go"
 )
 
+// Server ...
+type Server struct {
+	instance *nats.Conn
+}
+
+// JetStream ...
+type JetStream struct {
+	instance nats.JetStreamContext
+}
+
 var (
-	natsClient *nats.Conn
-	natsJS     nats.JetStreamContext
+	natsServer    Server
+	natsJetStream JetStream
 )
 
 // Connect ...
@@ -42,25 +52,25 @@ func Connect(cfg Config) error {
 	fmt.Println(aurora.Green("*** CONNECTED TO NATS: " + cfg.URL))
 
 	// Set client
-	natsClient = nc
+	natsServer.instance = nc
 
 	// Create jet stream context
-	js, err := natsClient.JetStream(nats.PublishAsyncMaxPending(256))
+	js, err := nc.JetStream(nats.PublishAsyncMaxPending(256))
 	if err != nil {
 		msg := fmt.Sprintf("error when create NATS JetStream: %s", err.Error())
 		return errors.New(msg)
 	}
-	natsJS = js
+	natsJetStream.instance = js
 
 	return nil
 }
 
-// GetClient ...
-func GetClient() *nats.Conn {
-	return natsClient
+// GetServer ...
+func GetServer() Server {
+	return natsServer
 }
 
 // GetJetStream ...
-func GetJetStream() nats.JetStreamContext {
-	return natsJS
+func GetJetStream() JetStream {
+	return natsJetStream
 }

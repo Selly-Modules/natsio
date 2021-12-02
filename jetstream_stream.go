@@ -8,21 +8,21 @@ import (
 )
 
 // GetStreamInfo ...
-func GetStreamInfo(name string) (*nats.StreamInfo, error) {
-	return natsJS.StreamInfo(name)
+func (js JetStream) GetStreamInfo(name string) (*nats.StreamInfo, error) {
+	return js.instance.StreamInfo(name)
 }
 
 // AddStream add new stream, with default config
 // Due to subject must have a unique name, subject name will be combined with stream name
 // E.g: stream name is "DEMO", subject name is "Subject-1", so final name in NATS will be: DEMO.Subject-1
-func AddStream(name string, subjects []string) error {
+func (js JetStream) AddStream(name string, subjects []string) error {
 	// Get info about the stream
-	stream, _ := GetStreamInfo(name)
+	stream, _ := js.GetStreamInfo(name)
 
 	// If stream not found, create new
 	if stream == nil {
 		subjectNames := generateSubjectNames(name, subjects)
-		_, err := natsJS.AddStream(&nats.StreamConfig{
+		_, err := js.instance.AddStream(&nats.StreamConfig{
 			Name:         name,
 			Subjects:     subjectNames,
 			Retention:    nats.WorkQueuePolicy,
@@ -32,7 +32,7 @@ func AddStream(name string, subjects []string) error {
 			NoAck:        false,
 		})
 		if err != nil {
-			msg := fmt.Sprintf("add stream error: %s", err.Error())
+			msg := fmt.Sprintf("[NATS JETSTREAM] - add stream error: %s", err.Error())
 			return errors.New(msg)
 		}
 	}
@@ -41,20 +41,20 @@ func AddStream(name string, subjects []string) error {
 }
 
 // DeleteStream ...
-func DeleteStream(name string) error {
-	if err := natsJS.DeleteStream(name); err != nil {
-		msg := fmt.Sprintf("delete stream error: %s", err.Error())
+func (js JetStream) DeleteStream(name string) error {
+	if err := js.instance.DeleteStream(name); err != nil {
+		msg := fmt.Sprintf("[NATS JETSTREAM] - delete stream error: %s", err.Error())
 		return errors.New(msg)
 	}
 	return nil
 }
 
 // AddStreamSubjects ...
-func AddStreamSubjects(name string, subjects []string) error {
+func (js JetStream) AddStreamSubjects(name string, subjects []string) error {
 	// Get info about the stream
-	stream, _ := GetStreamInfo(name)
+	stream, _ := js.GetStreamInfo(name)
 	if stream == nil {
-		msg := fmt.Sprintf("error when adding stream %s subjects: stream not found", name)
+		msg := fmt.Sprintf("[NATS JETSTREAM] - error when adding stream %s subjects: stream not found", name)
 		return errors.New(msg)
 	}
 
@@ -62,12 +62,12 @@ func AddStreamSubjects(name string, subjects []string) error {
 	subjectNames := generateSubjectNames(name, subjects)
 	newSubjects := mergeAndUniqueArrayStrings(subjectNames, stream.Config.Subjects)
 
-	_, err := natsJS.UpdateStream(&nats.StreamConfig{
+	_, err := js.instance.UpdateStream(&nats.StreamConfig{
 		Name:     name,
 		Subjects: newSubjects,
 	})
 	if err != nil {
-		msg := fmt.Sprintf("add stream error: %s", err.Error())
+		msg := fmt.Sprintf("[NATS JETSTREAM] - add stream error: %s", err.Error())
 		return errors.New(msg)
 	}
 	return nil
