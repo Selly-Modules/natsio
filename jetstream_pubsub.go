@@ -35,19 +35,19 @@ func (js JetStream) Subscribe(stream, subject string, cb nats.MsgHandler) (*nats
 //
 // Example:
 //
-// sub, err := natsio.PullSubscribe("A_STREAM", "A_OBJECT")
+// js := natsio.GetJetStream()
+//
+// sub, err := js.PullSubscribe("A_SUBJECT", "A_DURABLE")
 //
 // for {
 //   messages, err := sub.Fetch(10)
 //   // process each messages
 // }
 //
-func (js JetStream) PullSubscribe(stream, subject string) (*nats.Subscription, error) {
-	channel := combineStreamAndSubjectName(stream, subject)
-
-	sub, err := js.instance.PullSubscribe(stream, subject)
+func (js JetStream) PullSubscribe(subject, durable string) (*nats.Subscription, error) {
+	sub, err := js.instance.PullSubscribe(subject, durable)
 	if err != nil {
-		msg := fmt.Sprintf("[NATS JETSTREAM] - pull subscribe subject #%s error: %s", channel, err.Error())
+		msg := fmt.Sprintf("[NATS JETSTREAM] - pull subscribe subject #%s - durable #%s error: %s", subject, durable, err.Error())
 		return nil, errors.New(msg)
 	}
 
