@@ -21,6 +21,9 @@ type JetStream struct {
 var (
 	natsServer    Server
 	natsJetStream JetStream
+
+	// FIXME: delete this
+	jsPublic nats.JetStreamContext
 )
 
 // Connect ...
@@ -62,6 +65,9 @@ func Connect(cfg Config) error {
 	}
 	natsJetStream.instance = js
 
+	// FIXME: delete this
+	jsPublic = js
+
 	return nil
 }
 
@@ -73,4 +79,9 @@ func GetServer() Server {
 // GetJetStream ...
 func GetJetStream() JetStream {
 	return natsJetStream
+}
+
+// GetJSPublic ...
+func GetJSPublic() nats.JetStreamContext {
+	return jsPublic
 }

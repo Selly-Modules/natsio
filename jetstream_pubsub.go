@@ -55,7 +55,7 @@ func (js JetStream) PullSubscribe(stream, subject, durable, consumer string) (*n
 		info, err := js.instance.AddConsumer(stream, &nats.ConsumerConfig{
 			Durable:       durable,
 			AckPolicy:     nats.AckExplicitPolicy,
-			FilterSubject: channel,
+			FilterSubject: subject,
 		})
 		if err == nil {
 			fmt.Println("CONSUMER INFO", info)
