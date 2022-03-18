@@ -45,7 +45,7 @@ func (js JetStream) Subscribe(stream, subject string, cb nats.MsgHandler) (*nats
 func (js JetStream) PullSubscribe(stream, subject string) (*nats.Subscription, error) {
 	channel := combineStreamAndSubjectName(stream, subject)
 
-	sub, err := js.instance.PullSubscribe(channel, subject)
+	sub, err := js.instance.PullSubscribe(stream, subject)
 	if err != nil {
 		msg := fmt.Sprintf("[NATS JETSTREAM] - pull subscribe subject #%s error: %s", channel, err.Error())
 		return nil, errors.New(msg)
