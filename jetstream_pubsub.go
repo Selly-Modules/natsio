@@ -45,14 +45,17 @@ func (js JetStream) Subscribe(stream, subject string, cb nats.MsgHandler) (*nats
 // }
 //
 func (js JetStream) PullSubscribe(stream, subject, durable, consumer string) (*nats.Subscription, error) {
+	channel := combineStreamAndSubjectName(stream, subject)
+
 	// Check if consumer existed
 	con, err := js.instance.ConsumerInfo(stream, consumer)
 	fmt.Println("con", con)
 	fmt.Println("err", err)
 	if con == nil {
 		info, err := js.instance.AddConsumer(stream, &nats.ConsumerConfig{
-			Durable:   durable,
-			AckPolicy: nats.AckExplicitPolicy,
+			Durable:       durable,
+			AckPolicy:     nats.AckExplicitPolicy,
+			FilterSubject: channel,
 		})
 		if err == nil {
 			fmt.Println("CONSUMER INFO", info)
@@ -63,7 +66,7 @@ func (js JetStream) PullSubscribe(stream, subject, durable, consumer string) (*n
 
 	sub, err := js.instance.PullSubscribe(subject, durable)
 	if err != nil {
-		msg := fmt.Sprintf("[NATS JETSTREAM] - pull subscribe subject #%s - durable #%s error: %s", subject, durable, err.Error())
+		msg := fmt.Sprintf("[NATS JETSTREAM] - pull subscribe subject #%s - durable #%s error: %s", channel, durable, err.Error())
 		return nil, errors.New(msg)
 	}
 
