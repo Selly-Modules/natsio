@@ -37,36 +37,27 @@ func (js JetStream) Subscribe(stream, subject string, cb nats.MsgHandler) (*nats
 //
 // js := natsio.GetJetStream()
 //
-// sub, err := js.PullSubscribe("A_SUBJECT", "A_DURABLE")
+// sub, err := js.PullSubscribe("A_SUBJECT", "A_SUBJECT", "A_CONSUMER")
 //
 // for {
 //   messages, err := sub.Fetch(10)
 //   // process each messages
 // }
 //
-func (js JetStream) PullSubscribe(stream, subject, durable, consumer string) (*nats.Subscription, error) {
+func (js JetStream) PullSubscribe(stream, subject, consumer string) (*nats.Subscription, error) {
 	channel := combineStreamAndSubjectName(stream, subject)
 
 	// Check if consumer existed
-	con, err := js.instance.ConsumerInfo(stream, consumer)
-	fmt.Println("con", con)
-	fmt.Println("err", err)
-	if con == nil {
-		info, err := js.instance.AddConsumer(stream, &nats.ConsumerConfig{
-			Durable:       durable,
-			AckPolicy:     nats.AckExplicitPolicy,
-			FilterSubject: subject,
-		})
-		if err == nil {
-			fmt.Println("CONSUMER INFO", info)
-		} else {
-			fmt.Println("ADD CONSUMER ERROR", err)
-		}
+	con, err := js.GetConsumerInfo(stream, consumer)
+	if con == nil || err != nil {
+		msg := fmt.Sprintf("[NATS JETSTREAM] - pull subscribe consumer %s not existed in stream %s", consumer, stream)
+		return nil, errors.New(msg)
 	}
 
-	sub, err := js.instance.PullSubscribe(subject, durable)
+	// Pull
+	sub, err := js.instance.PullSubscribe(channel, consumer)
 	if err != nil {
-		msg := fmt.Sprintf("[NATS JETSTREAM] - pull subscribe subject #%s - durable #%s error: %s", channel, durable, err.Error())
+		msg := fmt.Sprintf("[NATS JETSTREAM] - pull subscribe subject #%s - consumer #%s error: %s", channel, consumer, err.Error())
 		return nil, errors.New(msg)
 	}
 
