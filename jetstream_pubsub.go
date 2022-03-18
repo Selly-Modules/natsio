@@ -44,7 +44,12 @@ func (js JetStream) Subscribe(stream, subject string, cb nats.MsgHandler) (*nats
 //   // process each messages
 // }
 //
-func (js JetStream) PullSubscribe(subject, durable string) (*nats.Subscription, error) {
+func (js JetStream) PullSubscribe(stream, subject, durable, consumer string) (*nats.Subscription, error) {
+	// Check if consumer existed
+	con, err := js.instance.ConsumerInfo(stream, consumer)
+	fmt.Println("con", con)
+	fmt.Println("err", err)
+
 	sub, err := js.instance.PullSubscribe(subject, durable)
 	if err != nil {
 		msg := fmt.Sprintf("[NATS JETSTREAM] - pull subscribe subject #%s - durable #%s error: %s", subject, durable, err.Error())
