@@ -49,6 +49,16 @@ func (js JetStream) PullSubscribe(stream, subject, durable, consumer string) (*n
 	con, err := js.instance.ConsumerInfo(stream, consumer)
 	fmt.Println("con", con)
 	fmt.Println("err", err)
+	if con == nil {
+		info, err := js.instance.AddConsumer(stream, &nats.ConsumerConfig{
+			Durable: durable,
+		})
+		if err != nil {
+			fmt.Println("CONSUMER INFO", info)
+		} else {
+			fmt.Println("ADD CONSUMER ERROR", err)
+		}
+	}
 
 	sub, err := js.instance.PullSubscribe(subject, durable)
 	if err != nil {
