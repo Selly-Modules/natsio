@@ -13,7 +13,7 @@ func (js JetStream) QueueSubscribe(stream, subject, queueName string, cb nats.Ms
 
 	_, err := js.instance.QueueSubscribe(channel, queueName, cb)
 	if err != nil {
-		msg := fmt.Sprintf("[NATS JETSTREAM] - queue subscribe with subject %s error: %s", channel, err.Error())
+		msg := fmt.Sprintf("[NATS JETSTREAM] - queue subscribe with subject #%s error: %s", channel, err.Error())
 		return errors.New(msg)
 	}
 	return nil
