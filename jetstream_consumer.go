@@ -14,10 +14,17 @@ func (js JetStream) GetConsumerInfo(stream, name string) (*nats.ConsumerInfo, er
 
 // AddConsumer ...
 func (js JetStream) AddConsumer(stream, subject, name string) error {
+	// Get consumer first, return if existed
+	consumer, err := js.GetConsumerInfo(stream, name)
+	if consumer != nil {
+		return nil
+	}
+
+	// Generate channel name
 	channel := combineStreamAndSubjectName(stream, subject)
 
 	// Add
-	_, err := js.instance.AddConsumer(stream, &nats.ConsumerConfig{
+	_, err = js.instance.AddConsumer(stream, &nats.ConsumerConfig{
 		Durable:       name,
 		AckPolicy:     nats.AckExplicitPolicy,
 		FilterSubject: channel,
