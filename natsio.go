@@ -3,6 +3,7 @@ package natsio
 import (
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/logrusorgru/aurora"
 	"github.com/nats-io/nats.go"
@@ -31,6 +32,8 @@ func Connect(cfg Config) error {
 
 	// Connect options
 	opts := make([]nats.Option, 0)
+
+	opts = append(opts, nats.Timeout(1*time.Minute))
 
 	// Has authentication
 	if cfg.User != "" {
