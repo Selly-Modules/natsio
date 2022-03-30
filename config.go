@@ -1,5 +1,7 @@
 package natsio
 
+import "time"
+
 // Config ...
 type Config struct {
 	// Connect url
@@ -13,6 +15,9 @@ type Config struct {
 
 	// TLS config
 	TLS *TLSConfig
+
+	// RequestTimeout
+	RequestTimeout time.Duration
 }
 
 // TLSConfig ...
