@@ -21,7 +21,7 @@ func (sv Server) Reply(msg *nats.Msg, payload []byte) error {
 	err := sv.instance.Publish(msg.Reply, payload)
 
 	// Ack message
-	msg.Ack()
+	// msg.Ack()
 	return err
 }
 
