@@ -18,11 +18,7 @@ func (sv Server) Request(subject string, payload []byte) (*nats.Msg, error) {
 
 // Reply ...
 func (sv Server) Reply(msg *nats.Msg, payload []byte) error {
-	err := sv.instance.Publish(msg.Reply, payload)
-
-	// Ack message
-	// msg.Ack()
-	return err
+	return sv.instance.Publish(msg.Reply, payload)
 }
 
 // Subscribe ...
