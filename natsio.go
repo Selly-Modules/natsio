@@ -3,7 +3,6 @@ package natsio
 import (
 	"errors"
 	"fmt"
-
 	"github.com/logrusorgru/aurora"
 	"github.com/nats-io/nats.go"
 )
@@ -11,6 +10,7 @@ import (
 // Server ...
 type Server struct {
 	instance *nats.Conn
+	Config   Config
 }
 
 // JetStream ...
@@ -53,6 +53,7 @@ func Connect(cfg Config) error {
 
 	// Set client
 	natsServer.instance = nc
+	natsServer.Config = cfg
 
 	// Create jet stream context
 	js, err := nc.JetStream(nats.PublishAsyncMaxPending(256))

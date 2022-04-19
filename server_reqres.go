@@ -13,7 +13,11 @@ const requestTimeout = 10 * time.Second
 
 // Request ...
 func (sv Server) Request(subject string, payload []byte) (*nats.Msg, error) {
-	return sv.instance.Request(subject, payload, requestTimeout)
+	timeout := requestTimeout
+	if sv.Config.RequestTimeout > 0 {
+		timeout = sv.Config.RequestTimeout
+	}
+	return sv.instance.Request(subject, payload, timeout)
 }
 
 // Reply ...
