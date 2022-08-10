@@ -34,3 +34,8 @@ func (sv Server) Subscribe(subject string, cb nats.MsgHandler) (*nats.Subscripti
 	}
 	return sub, nil
 }
+
+// NewJSONEncodedConn ...
+func (sv Server) NewJSONEncodedConn() (*nats.EncodedConn, error) {
+	return nats.NewEncodedConn(sv.instance, nats.JSON_ENCODER)
+}
