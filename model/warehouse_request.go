@@ -46,4 +46,5 @@ type UpdateOutboundRequestLogisticInfoPayload struct {
 // CancelOutboundRequest ...
 type CancelOutboundRequest struct {
 	ORCode string `json:"orCode"`
+	Note   string `json:"note"`
 }
