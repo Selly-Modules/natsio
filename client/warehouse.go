@@ -43,8 +43,25 @@ func (w Warehouse) UpdateOutboundRequestLogisticInfo(p model.UpdateOutboundReque
 		return err
 	}
 	var r struct {
-		Data  *model.OutboundRequestResponse `json:"data"`
-		Error string                         `json:"error"`
+		Error string `json:"error"`
+	}
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	return nil
+}
+
+// CancelOutboundRequest ...
+func (w Warehouse) CancelOutboundRequest(p model.CancelOutboundRequest) error {
+	msg, err := natsio.GetServer().Request(subject.WarehouseCancelOutboundRequest, toBytes(p))
+	if err != nil {
+		return err
+	}
+	var r struct {
+		Error string `json:"error"`
 	}
 	if err = json.Unmarshal(msg.Data, &r); err != nil {
 		return err
