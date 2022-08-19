@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 
 	"github.com/Selly-Modules/natsio"
+	"github.com/Selly-Modules/natsio/model"
 	"github.com/Selly-Modules/natsio/subject"
 )
 
@@ -16,7 +17,7 @@ func GetCommunication() Communication {
 }
 
 // RequestHttp ...
-func (c Communication) RequestHttp(p communication.CommunicationRequestHttp) (r *communication.CommunicationHttpResponse, err error) {
+func (c Communication) RequestHttp(p model.CommunicationRequestHttp) (r *model.CommunicationHttpResponse, err error) {
 	msg, err := natsio.GetServer().Request(subject.CommunicationRequestHTTP, toBytes(p))
 	if err != nil {
 		return nil, err
