@@ -16,6 +16,8 @@ func (e JSONEncoder) Subscribe(subject string, cb nats.Handler) (*nats.Subscript
 	sub, err := e.encConn.Subscribe(subject, cb)
 	if err != nil {
 		log.Printf("natsio.JSONEncoder.Subscribe err: %v\n", err)
+	} else {
+		log.Printf("natsio.JSONEncoder - subscribed to subject %s successfully\n", subject)
 	}
 	return sub, err
 }
