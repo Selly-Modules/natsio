@@ -5,6 +5,7 @@ type OutboundRequestResponse struct {
 	// System code
 	OrderCode    string `json:"orderCode"`
 	TrackingCode string `json:"trackingCode"`
+	ID           string `json:"id"` // OR id
 
 	// Partner response
 	ORCode    string `json:"orCode"`

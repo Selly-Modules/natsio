@@ -2,6 +2,7 @@ package model
 
 // OutboundRequestPayload ...
 type OutboundRequestPayload struct {
+	OrderID      string                `json:"orderId"`
 	OrderCode    string                `json:"orderCode"`
 	TrackingCode string                `json:"trackingCode"`
 	WarehouseID  string                `json:"warehouseId"`
