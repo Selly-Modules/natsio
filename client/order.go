@@ -18,7 +18,7 @@ func GetOrder() Order {
 }
 
 // UpdateORStatus ...
-func (w Order) UpdateORStatus(p model.OrderUpdateORStatus) error {
+func (o Order) UpdateORStatus(p model.OrderUpdateORStatus) error {
 	msg, err := natsio.GetServer().Request(subject.OrderUpdateORStatus, toBytes(p))
 	if err != nil {
 		return err
@@ -26,6 +26,22 @@ func (w Order) UpdateORStatus(p model.OrderUpdateORStatus) error {
 	var r struct {
 		Error string `json:"error"`
 	}
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	return nil
+}
+
+// CancelDelivery ...
+func (o Order) CancelDelivery(p model.OrderCancelDelivery) error {
+	msg, err := natsio.GetServer().Request(subject.OrderUpdateORStatus, toBytes(p))
+	if err != nil {
+		return err
+	}
+	var r model.CommonResponseData
 	if err = json.Unmarshal(msg.Data, &r); err != nil {
 		return err
 	}

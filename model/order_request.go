@@ -7,3 +7,8 @@ type OrderUpdateORStatus struct {
 	Status    string `json:"status"`
 	Reason    string `json:"reason"`
 }
+
+// OrderCancelDelivery ...
+type OrderCancelDelivery struct {
+	OrderID string `json:"orderId"`
+}
