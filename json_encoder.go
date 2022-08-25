@@ -26,3 +26,8 @@ func (e JSONEncoder) Subscribe(subject string, cb nats.Handler) (*nats.Subscript
 func (e JSONEncoder) Publish(reply string, data interface{}) error {
 	return e.encConn.Publish(reply, data)
 }
+
+// Request ...
+func (e JSONEncoder) Request(subject string, data interface{}, res interface{}) error {
+	return e.encConn.Request(subject, data, res, requestTimeout)
+}
