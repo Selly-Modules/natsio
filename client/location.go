@@ -18,7 +18,7 @@ func GetLocation() Location {
 }
 
 func (l Location) GetLocationByCode(payload model.LocationRequestPayload) (*model.ResponseLocationAddress, error) {
-	msg, err := natsio.GetServer().Request(subject.GetLocationWarehouse, toBytes(payload))
+	msg, err := natsio.GetServer().Request(subject.Location.GetLocationByCode, toBytes(payload))
 	if err != nil {
 		return nil, err
 	}

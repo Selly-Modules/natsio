@@ -13,7 +13,7 @@ import (
 type Supplier struct{}
 
 func (s Supplier) GetSupplierInfo(supplierID string) (*model.ResponseSupplierInfo, error) {
-	msg, err := natsio.GetServer().Request(subject.GetSupplierInfo, toBytes(supplierID))
+	msg, err := natsio.GetServer().Request(subject.Supplier.GetSupplierInfo, toBytes(supplierID))
 	if err != nil {
 		return nil, err
 	}

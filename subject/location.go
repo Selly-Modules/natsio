@@ -1,8 +1,13 @@
 package subject
 
-const (
-	locationPrefix = "location_"
-)
-const (
-	GetLocationWarehouse = locationPrefix + "get_address"
-)
+import "fmt"
+
+func getLocationValue(val string) string {
+	return fmt.Sprintf("%s.%s", prefixes.Location, val)
+}
+
+var Location = struct {
+	GetLocationByCode string
+}{
+	GetLocationByCode: getLocationValue("get_location_warehouse"),
+}
