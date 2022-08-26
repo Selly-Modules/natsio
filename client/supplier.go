@@ -12,7 +12,12 @@ import (
 // Supplier ...
 type Supplier struct{}
 
-func (s Supplier) GetSupplierInfo(supplierID string) (*model.ResponseSupplierInfo, error) {
+// GetSupplier ...
+func GetSupplier() Supplier {
+	return Supplier{}
+}
+
+func (s Supplier) GetSupplierInfo(supplierID model.GetSupplierRequest) (*model.ResponseSupplierInfo, error) {
 	msg, err := natsio.GetServer().Request(subject.Supplier.GetSupplierInfo, toBytes(supplierID))
 	if err != nil {
 		return nil, err
