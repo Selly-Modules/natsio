@@ -19,7 +19,7 @@ func GetWarehouse() Warehouse {
 
 // CreateOutboundRequest ...
 func (w Warehouse) CreateOutboundRequest(p model.OutboundRequestPayload) (*model.OutboundRequestResponse, error) {
-	msg, err := natsio.GetServer().Request(subject.WarehouseCreateOutboundRequest, toBytes(p))
+	msg, err := natsio.GetServer().Request(subject.Warehouse.CreateOutboundRequest, toBytes(p))
 	if err != nil {
 		return nil, err
 	}
@@ -38,7 +38,7 @@ func (w Warehouse) CreateOutboundRequest(p model.OutboundRequestPayload) (*model
 
 // UpdateOutboundRequestLogisticInfo ...
 func (w Warehouse) UpdateOutboundRequestLogisticInfo(p model.UpdateOutboundRequestLogisticInfoPayload) error {
-	msg, err := natsio.GetServer().Request(subject.WarehouseUpdateOutboundRequestLogistic, toBytes(p))
+	msg, err := natsio.GetServer().Request(subject.Warehouse.UpdateOutboundRequestLogistic, toBytes(p))
 	if err != nil {
 		return err
 	}
@@ -56,7 +56,7 @@ func (w Warehouse) UpdateOutboundRequestLogisticInfo(p model.UpdateOutboundReque
 
 // CancelOutboundRequest ...
 func (w Warehouse) CancelOutboundRequest(p model.CancelOutboundRequest) error {
-	msg, err := natsio.GetServer().Request(subject.WarehouseCancelOutboundRequest, toBytes(p))
+	msg, err := natsio.GetServer().Request(subject.Warehouse.CancelOutboundRequest, toBytes(p))
 	if err != nil {
 		return err
 	}
@@ -74,7 +74,7 @@ func (w Warehouse) CancelOutboundRequest(p model.CancelOutboundRequest) error {
 
 // GetConfigByWarehouseID ...
 func (w Warehouse) GetConfigByWarehouseID(warehouseID string) (*model.WarehouseConfiguration, error) {
-	msg, err := natsio.GetServer().Request(subject.WarehouseGetConfiguration, toBytes(warehouseID))
+	msg, err := natsio.GetServer().Request(subject.Warehouse.GetConfiguration, toBytes(warehouseID))
 	if err != nil {
 		return nil, err
 	}

@@ -3,7 +3,6 @@ package natsio
 import (
 	"errors"
 	"fmt"
-	"github.com/logrusorgru/aurora"
 	"github.com/nats-io/nats.go"
 )
 
@@ -49,7 +48,7 @@ func Connect(cfg Config) error {
 		return errors.New(msg)
 	}
 
-	fmt.Println(aurora.Green("*** CONNECTED TO NATS: " + cfg.URL))
+	fmt.Printf("⚡️[natsio]: connected to %s \n", cfg.URL)
 
 	// Set client
 	natsServer.instance = nc
