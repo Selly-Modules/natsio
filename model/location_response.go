@@ -23,9 +23,3 @@ type LocationWard struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 }
-
-// ResponseSupplierInfo ...
-type ResponseSupplierInfo struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
