@@ -1,10 +1,19 @@
 package subject
 
-const communicationPrefix = "communication_"
+import "fmt"
 
-const (
-	CommunicationRequestHTTP       = communicationPrefix + "request_http"
-	CommunicationResponseHTTP      = communicationPrefix + "response_http"
-	CommunicationWebhookTNC        = communicationPrefix + "webhook_tnc"
-	CommunicationWebhookGlobalCare = communicationPrefix + "webhook_global_care"
-)
+func getCommunicationValue(val string) string {
+	return fmt.Sprintf("%s.%s", prefixes.Communication, val)
+}
+
+var Communication = struct {
+	RequestHTTP       string
+	ResponseHTTP      string
+	WebhookTNC        string
+	WebhookGlobalCare string
+}{
+	RequestHTTP:       getCommunicationValue("request_http"),
+	ResponseHTTP:      getCommunicationValue("response_http"),
+	WebhookTNC:        getCommunicationValue("webhook_tnc"),
+	WebhookGlobalCare: getCommunicationValue("webhook_global_care"),
+}
