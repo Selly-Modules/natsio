@@ -1,8 +1,17 @@
 package subject
 
-const orderPrefix = "order_"
+import "fmt"
 
-const (
-	OrderUpdateORStatus = orderPrefix + "update_outbound_request_status"
-	OrderCancelDelivery = orderPrefix + "cancel_delivery"
-)
+func getOrderValue(val string) string {
+	return fmt.Sprintf("%s.%s", prefixes.Order, val)
+}
+
+var Order = struct {
+	UpdateORStatus    string
+	CancelDelivery    string
+	WebhookTNC        string
+	WebhookGlobalCare string
+}{
+	UpdateORStatus: getOrderValue("update_outbound_request_status"),
+	CancelDelivery: getOrderValue("cancel_delivery"),
+}

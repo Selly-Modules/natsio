@@ -34,8 +34,8 @@ type WarehouseSupplier struct {
 type WarehouseOrder struct {
 	MinimumValue             float64                `json:"minimumValue"`
 	PaymentMethod            WarehousePaymentMethod `json:"paymentMethod"`
-	IsLimitNumberOfPurchases bool                   `json:"isLimitNumberOfPurchases" json:"isLimitNumberOfPurchases"`
-	LimitNumberOfPurchases   int64                  `json:"limitNumberOfPurchases" json:"limitNumberOfPurchases"`
+	IsLimitNumberOfPurchases bool                   `json:"isLimitNumberOfPurchases"`
+	LimitNumberOfPurchases   int64                  `json:"limitNumberOfPurchases"`
 }
 
 // WarehousePaymentMethod ...
