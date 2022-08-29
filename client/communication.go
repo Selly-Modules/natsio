@@ -18,7 +18,7 @@ func GetCommunication() Communication {
 
 // RequestHttp ...
 func (c Communication) RequestHttp(p model.CommunicationRequestHttp) (r *model.CommunicationHttpResponse, err error) {
-	msg, err := natsio.GetServer().Request(subject.CommunicationRequestHTTP, toBytes(p))
+	msg, err := natsio.GetServer().Request(subject.Communication.RequestHTTP, toBytes(p))
 	if err != nil {
 		return nil, err
 	}
