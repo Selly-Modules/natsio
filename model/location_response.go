@@ -10,16 +10,19 @@ type ResponseLocationAddress struct {
 type LocationProvince struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+	Code string `json:"code"`
 }
 
 // LocationDistrict ...
 type LocationDistrict struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+	Code string `json:"code"`
 }
 
 // LocationWard ...
 type LocationWard struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+	Code string `json:"code"`
 }
