@@ -63,3 +63,9 @@ type CancelOutboundRequest struct {
 	ORCode string `json:"orCode"`
 	Note   string `json:"note"`
 }
+
+// SyncORStatusRequest ...
+type SyncORStatusRequest struct {
+	ORCode    string `json:"orCode"`
+	OrderCode string `json:"orderCode"`
+}

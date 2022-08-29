@@ -59,3 +59,11 @@ type WarehousePartner struct {
 	Enabled        bool   `json:"enabled"`
 	Authentication string `json:"authentication"`
 }
+
+// SyncORStatusResponse ...
+type SyncORStatusResponse struct {
+	ORCode         string `json:"orCode"`
+	OrderCode      string `json:"orderCode"`
+	Status         string `json:"status"`
+	DeliveryStatus string `json:"deliveryStatus"`
+}
