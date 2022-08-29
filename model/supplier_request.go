@@ -6,5 +6,9 @@ import (
 
 // GetSupplierRequest ...
 type GetSupplierRequest struct {
-	ID primitive.ObjectID `json:"_id"`
+	ListID []primitive.ObjectID `json:"listID"`
+}
+
+type GetSupplierContractRequest struct {
+	SupplierID primitive.ObjectID `json:"supplierID"`
 }
