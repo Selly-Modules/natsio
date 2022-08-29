@@ -37,7 +37,7 @@ func (o Order) UpdateORStatus(p model.OrderUpdateORStatus) error {
 
 // CancelDelivery ...
 func (o Order) CancelDelivery(p model.OrderCancelDelivery) error {
-	msg, err := natsio.GetServer().Request(subject.Order.UpdateORStatus, toBytes(p))
+	msg, err := natsio.GetServer().Request(subject.Order.CancelDelivery, toBytes(p))
 	if err != nil {
 		return err
 	}

@@ -47,9 +47,9 @@ type WarehousePaymentMethod struct {
 // WarehouseDelivery ...
 type WarehouseDelivery struct {
 	DeliveryMethods      []string `json:"deliveryMethods"`
-	PriorityServiceCodes []string `json:"priorityDeliveryServiceCodes"`
-	EnabledSources       []int    `json:"enabledDeliverySources"`
-	Types                []string `json:"type"`
+	PriorityServiceCodes []string `json:"priorityServiceCodes"`
+	EnabledSources       []int    `json:"enabledSources"`
+	Types                []string `json:"types"`
 }
 
 // WarehousePartner ...
