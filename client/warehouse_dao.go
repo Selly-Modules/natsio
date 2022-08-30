@@ -28,7 +28,7 @@ func (w Warehouse) DistinctWithField(p model.FindWithCondition) ([]interface{}, 
 }
 
 // FindOneByCondition ...
-func (w Warehouse) FindOneByCondition(p model.FindWithCondition) (*model.WarehouseNatsResponse, error) {
+func (w Warehouse) FindOneByCondition(p model.FindOneCondition) (*model.WarehouseNatsResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.Warehouse.FindOne, bsonToBytes(p))
 	if err != nil {
 		return nil, err
