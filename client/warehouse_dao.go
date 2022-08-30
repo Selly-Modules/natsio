@@ -9,7 +9,7 @@ import (
 )
 
 // DistinctWithField ...
-func (w Warehouse) DistinctWithField(p model.FindWithCondition) ([]interface{}, error) {
+func (w Warehouse) DistinctWithField(p model.DistinctWithField) ([]interface{}, error) {
 	msg, err := natsio.GetServer().Request(subject.Warehouse.Distinct, bsonToBytes(p))
 	if err != nil {
 		return nil, err
