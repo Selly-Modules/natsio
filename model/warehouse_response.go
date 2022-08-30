@@ -98,7 +98,7 @@ type WarehouseNatsResponse struct {
 	SearchString   string                    `json:"searchString"`
 	Slug           string                    `json:"slug"`
 	Status         string                    `json:"status"`
-	Supplier       WarehouseSupplier         `json:"supplier"`
+	Supplier       string                    `json:"supplier"`
 	Contact        ResponseWarehouseContact  `json:"contact"`
 	Location       ResponseWarehouseLocation `json:"location"`
 	Configurations WarehouseConfiguration    `json:"configurations"`
