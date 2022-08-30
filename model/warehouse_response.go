@@ -1,5 +1,7 @@
 package model
 
+import "time"
+
 // OutboundRequestResponse ...
 type OutboundRequestResponse struct {
 	// System code
@@ -58,4 +60,48 @@ type WarehousePartner struct {
 	Code           string `json:"code"`
 	Enabled        bool   `json:"enabled"`
 	Authentication string `json:"authentication"`
+}
+
+// ResponseWarehouseContact ...
+type ResponseWarehouseContact struct {
+	Name    string `json:"name"`
+	Phone   string `json:"phone"`
+	Address string `json:"address"`
+	Email   string `json:"email"`
+}
+
+// ResponseWarehouseLocation ...
+type ResponseWarehouseLocation struct {
+	Province            CommonLocation `json:"province"`
+	District            CommonLocation `json:"district"`
+	Ward                CommonLocation `json:"ward"`
+	Address             string         `json:"address"`
+	LocationCoordinates ResponseLatLng `json:"locationCoordinates"`
+}
+
+type CommonLocation struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+	Code int    `json:"code"`
+}
+
+// ResponseLatLng ...
+type ResponseLatLng struct {
+	Latitude  float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+}
+
+// WarehouseNatsResponse ...
+type WarehouseNatsResponse struct {
+	ID             string                    `json:"_id"`
+	Name           string                    `json:"name"`
+	SearchString   string                    `json:"searchString"`
+	Slug           string                    `json:"slug"`
+	Status         string                    `json:"status"`
+	Supplier       string                    `json:"supplier"`
+	Contact        ResponseWarehouseContact  `json:"contact"`
+	Location       ResponseWarehouseLocation `json:"location"`
+	Configurations WarehouseConfiguration    `json:"configurations"`
+	CreatedAt      time.Time                 `json:"createdAt"`
+	UpdatedAt      time.Time                 `json:"updatedAt"`
 }
