@@ -3,6 +3,7 @@ package natsio
 import (
 	"errors"
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/nats-io/nats.go"
@@ -33,4 +34,14 @@ func (sv Server) Subscribe(subject string, cb nats.MsgHandler) (*nats.Subscripti
 		return nil, errors.New(msg)
 	}
 	return sub, nil
+}
+
+// NewJSONEncodedConn ...
+func (sv Server) NewJSONEncodedConn() (*JSONEncoder, error) {
+	enc, err := nats.NewEncodedConn(sv.instance, nats.JSON_ENCODER)
+	if err != nil {
+		log.Printf("natsio.NewJSONEncodedConn: err %v\n", err)
+		return nil, err
+	}
+	return &JSONEncoder{encConn: enc}, nil
 }
