@@ -15,3 +15,8 @@ type DistinctWithField struct {
 	Conditions interface{} `json:"conditions"`
 	Filed      string      `json:"filed"`
 }
+
+type ActionBy struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
