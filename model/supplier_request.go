@@ -1,10 +1,11 @@
 package model
 
-import (
-	"go.mongodb.org/mongo-driver/bson/primitive"
-)
-
 // GetSupplierRequest ...
 type GetSupplierRequest struct {
-	ID primitive.ObjectID `json:"_id"`
+	Limit          int
+	Page           int
+	Keyword        string
+	Status         string
+	PIC            string
+	ContractStatus string
 }

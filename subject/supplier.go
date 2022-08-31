@@ -7,7 +7,7 @@ func getSupplierValue(val string) string {
 }
 
 var Supplier = struct {
-	GetSupplierInfo string
+	FindAll string
 }{
-	GetSupplierInfo: getSupplierValue("get_supplier_info"),
+	FindAll: getSupplierValue("find_all"),
 }

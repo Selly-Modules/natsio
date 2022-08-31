@@ -17,18 +17,18 @@ func GetSupplier() Supplier {
 	return Supplier{}
 }
 
-func (s Supplier) GetSupplierInfo(supplierID model.GetSupplierRequest) (*model.ResponseSupplierInfo, error) {
-	msg, err := natsio.GetServer().Request(subject.Supplier.GetSupplierInfo, toBytes(supplierID))
+func (s Supplier) FindAll(supplierID model.GetSupplierRequest) (*model.SupplierAll, error) {
+	msg, err := natsio.GetServer().Request(subject.Supplier.FindAll, toBytes(supplierID))
 	if err != nil {
 		return nil, err
 	}
 
 	var r struct {
-		Data  *model.ResponseSupplierInfo `json:"data"`
-		Error string                      `json:"error"`
+		Data  *model.SupplierAll `json:"data"`
+		Error string             `json:"error"`
 	}
 
-	if err := json.Unmarshal(msg.Data, &r); err != nil {
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
 		return nil, err
 	}
 	if r.Error != "" {
