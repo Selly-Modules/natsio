@@ -12,6 +12,19 @@ type OutboundRequestPayload struct {
 	TPLCode      string                `json:"tplCode"`
 	Customer     CustomerInfo          `json:"customer"`
 	Items        []OutboundRequestItem `json:"items"`
+	Insurance    *InsuranceOpts
+}
+
+// InsuranceOpts ...
+type InsuranceOpts struct {
+	VehicleTypeID    string `json:"vehicleTypeId"`
+	VehicleTypeName  string `json:"vehicleTypeName"`
+	InsuranceTypeID  string `json:"insuranceTypeId"`
+	YearsOfInsurance int    `json:"yearsOfInsurance"`
+	License          string `json:"license"`
+	Chassis          string `json:"chassis"`
+	Engine           string `json:"engine"`
+	BeginDate        string `json:"beginDate"`
 }
 
 // OutboundRequestItem ...
@@ -25,6 +38,7 @@ type OutboundRequestItem struct {
 type CustomerInfo struct {
 	Name        string        `json:"name"`
 	PhoneNumber string        `json:"phoneNumber"`
+	Email       string        `json:"email"`
 	Address     AddressDetail `json:"address"`
 }
 
@@ -48,4 +62,10 @@ type UpdateOutboundRequestLogisticInfoPayload struct {
 type CancelOutboundRequest struct {
 	ORCode string `json:"orCode"`
 	Note   string `json:"note"`
+}
+
+// SyncORStatusRequest ...
+type SyncORStatusRequest struct {
+	ORCode    string `json:"orCode"`
+	OrderCode string `json:"orderCode"`
 }

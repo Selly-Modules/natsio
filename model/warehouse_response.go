@@ -62,6 +62,14 @@ type WarehousePartner struct {
 	Authentication string `json:"authentication"`
 }
 
+// SyncORStatusResponse ...
+type SyncORStatusResponse struct {
+	ORCode         string `json:"orCode"`
+	OrderCode      string `json:"orderCode"`
+	Status         string `json:"status"`
+	DeliveryStatus string `json:"deliveryStatus"`
+}
+
 // ResponseWarehouseContact ...
 type ResponseWarehouseContact struct {
 	Name    string `json:"name"`
