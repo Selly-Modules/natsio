@@ -15,7 +15,11 @@ var Warehouse = struct {
 	FindByCondition               string
 	Distinct                      string
 	Count                         string
+	AfterUpdateWarehouse          string
+	AfterCreateWarehouse          string
 }{
+	AfterCreateWarehouse:          getWarehouseValue("after_create_warehouse"),
+	AfterUpdateWarehouse:          getWarehouseValue("after_update_warehouse"),
 	CreateOutboundRequest:         getWarehouseValue("create_outbound_request"),
 	UpdateOutboundRequestLogistic: getWarehouseValue("update_outbound_request_logistic_info"),
 	CancelOutboundRequest:         getWarehouseValue("cancel_outbound_request"),
