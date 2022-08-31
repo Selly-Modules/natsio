@@ -7,11 +7,11 @@ func getOrderValue(val string) string {
 }
 
 var Order = struct {
-	UpdateORStatus    string
-	CancelDelivery    string
-	WebhookTNC        string
-	WebhookGlobalCare string
+	UpdateORStatus       string
+	CancelDelivery       string
+	ChangeDeliveryStatus string
 }{
-	UpdateORStatus: getOrderValue("update_outbound_request_status"),
-	CancelDelivery: getOrderValue("cancel_delivery"),
+	UpdateORStatus:       getOrderValue("update_outbound_request_status"),
+	CancelDelivery:       getOrderValue("cancel_delivery"),
+	ChangeDeliveryStatus: getOrderValue("change_delivery_status"),
 }

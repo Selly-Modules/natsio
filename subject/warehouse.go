@@ -11,9 +11,23 @@ var Warehouse = struct {
 	UpdateOutboundRequestLogistic string
 	CancelOutboundRequest         string
 	GetConfiguration              string
+	SyncORStatus                  string
+	WebhookTNC                    string
+	WebhookGlobalCare             string
+	FindOne                       string
+	FindByCondition               string
+	Distinct                      string
+	Count                         string
 }{
 	CreateOutboundRequest:         getWarehouseValue("create_outbound_request"),
 	UpdateOutboundRequestLogistic: getWarehouseValue("update_outbound_request_logistic_info"),
 	CancelOutboundRequest:         getWarehouseValue("cancel_outbound_request"),
 	GetConfiguration:              getWarehouseValue("get_configuration"),
+	SyncORStatus:                  getWarehouseValue("sync_or_status"),
+	WebhookTNC:                    getWarehouseValue("webhook_tnc"),
+	WebhookGlobalCare:             getWarehouseValue("webhook_global_care"),
+	FindOne:                       getWarehouseValue("find_one"),
+	FindByCondition:               getWarehouseValue("find_all_by_condition"),
+	Distinct:                      getWarehouseValue("distinct"),
+	Count:                         getWarehouseValue("count"),
 }
