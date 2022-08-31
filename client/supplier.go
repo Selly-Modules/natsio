@@ -17,8 +17,8 @@ func GetSupplier() Supplier {
 	return Supplier{}
 }
 
-func (s Supplier) GetListSupplierInfo(supplierID model.GetSupplierRequest) ([]*model.ResponseSupplierInfo, error) {
-	msg, err := natsio.GetServer().Request(subject.Supplier.GetListSupplierInfo, toBytes(supplierID))
+func (s Supplier) GetListSupplierInfo(p model.GetSupplierRequest) ([]*model.ResponseSupplierInfo, error) {
+	msg, err := natsio.GetServer().Request(subject.Supplier.GetListSupplierInfo, toBytes(p))
 	if err != nil {
 		return nil, err
 	}
