@@ -24,6 +24,12 @@ type WarehouseConfiguration struct {
 	Order                   WarehouseOrder    `json:"order"`
 	Partner                 WarehousePartner  `json:"partner"`
 	Delivery                WarehouseDelivery `json:"delivery"`
+	Other                   WarehouseOther    `json:"other"`
+}
+
+// WarehouseOther ...
+type WarehouseOther struct {
+	DoesSupportSellyExpress bool `json:"doesSupportSellyExpress"`
 }
 
 // WarehouseSupplier ...
