@@ -13,3 +13,10 @@ type OrderUpdateORStatus struct {
 type OrderCancelDelivery struct {
 	OrderID string `json:"orderId"`
 }
+
+// OrderChangeDeliveryStatus ...
+type OrderChangeDeliveryStatus struct {
+	OrderID        string   `json:"orderId"`
+	DeliveryStatus string   `json:"deliveryStatus"`
+	ActionBy       ActionBy `json:"actionBy"`
+}
