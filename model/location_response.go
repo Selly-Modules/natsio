@@ -29,15 +29,15 @@ type LocationWard struct {
 
 // LocationProvinceResponse ...
 type LocationProvinceResponse struct {
-	Province []LocationProvince `json:"province"`
+	Provinces []LocationProvince `json:"provinces"`
 }
 
 // LocationDistrictResponse ...
 type LocationDistrictResponse struct {
-	District []LocationDistrict `json:"district"`
+	Districts []LocationDistrict `json:"districts"`
 }
 
 // LocationWardResponse ...
 type LocationWardResponse struct {
-	Ward []LocationWard `json:"ward"`
+	Wards []LocationWard `json:"wards"`
 }

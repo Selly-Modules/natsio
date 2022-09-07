@@ -9,15 +9,15 @@ type LocationRequestPayload struct {
 
 // ProvinceRequestPayload ...
 type ProvinceRequestPayload struct {
-	Codes []int `json:"Codes"`
+	Codes []int `json:"codes"`
 }
 
 // DistrictRequestPayload ...
 type DistrictRequestPayload struct {
-	Codes []int `json:"Codes"`
+	Codes []int `json:"codes"`
 }
 
 // WardRequestPayload ...
 type WardRequestPayload struct {
-	Codes []int `json:"Codes"`
+	Codes []int `json:"codes"`
 }

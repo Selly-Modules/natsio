@@ -13,7 +13,7 @@ var Location = struct {
 	GetWardsByCodes     string
 }{
 	GetLocationByCode:   getLocationValue("get_location_warehouse"),
-	GetProvincesByCodes: getLocationValue("get_provinces_warehouse"),
-	GetDistrictsByCodes: getLocationValue("get_districts_warehouse"),
-	GetWardsByCodes:     getLocationValue("get_wards_warehouse"),
+	GetProvincesByCodes: getLocationValue("get_provinces_by_codes"),
+	GetDistrictsByCodes: getLocationValue("get_districts_by_codes"),
+	GetWardsByCodes:     getLocationValue("get_wards_by_codes"),
 }
