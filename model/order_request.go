@@ -26,3 +26,10 @@ type OrderChangeDeliveryStatus struct {
 type OrderORData struct {
 	Link string `json:"link"`
 }
+
+// OrderUpdateLogisticInfoFailed ...
+type OrderUpdateLogisticInfoFailed struct {
+	OrderID string `json:"orderId"`
+	ORCode  string `json:"orCode"`
+	Reason  string `json:"reason"`
+}
