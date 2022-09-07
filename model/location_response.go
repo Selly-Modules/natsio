@@ -26,3 +26,18 @@ type LocationWard struct {
 	Name string `json:"name"`
 	Code int    `json:"code"`
 }
+
+// LocationProvinceResponse ...
+type LocationProvinceResponse struct {
+	Provinces []LocationProvince `json:"provinces"`
+}
+
+// LocationDistrictResponse ...
+type LocationDistrictResponse struct {
+	Districts []LocationDistrict `json:"districts"`
+}
+
+// LocationWardResponse ...
+type LocationWardResponse struct {
+	Wards []LocationWard `json:"wards"`
+}
