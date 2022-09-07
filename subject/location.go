@@ -7,7 +7,13 @@ func getLocationValue(val string) string {
 }
 
 var Location = struct {
-	GetLocationByCode string
+	GetLocationByCode   string
+	GetProvincesByCodes string
+	GetDistrictsByCodes string
+	GetWardsByCodes     string
 }{
-	GetLocationByCode: getLocationValue("get_location_warehouse"),
+	GetLocationByCode:   getLocationValue("get_location_warehouse"),
+	GetProvincesByCodes: getLocationValue("get_provinces_warehouse"),
+	GetDistrictsByCodes: getLocationValue("get_districts_warehouse"),
+	GetWardsByCodes:     getLocationValue("get_wards_warehouse"),
 }
