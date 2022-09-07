@@ -108,6 +108,7 @@ type ResponseLatLng struct {
 // WarehouseNatsResponse ...
 type WarehouseNatsResponse struct {
 	ID             string                    `json:"_id"`
+	Staff          string                    `json:"staff"`
 	Name           string                    `json:"name"`
 	SearchString   string                    `json:"searchString"`
 	Slug           string                    `json:"slug"`
