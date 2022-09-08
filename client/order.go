@@ -82,3 +82,19 @@ func (o Order) UpdateLogisticInfoFailed(p model.OrderUpdateLogisticInfoFailed) e
 	}
 	return nil
 }
+
+// ORNotUpdateStatus ...
+func (o Order) ORNotUpdateStatus(p model.OrderORsNotUpdateStatus) error {
+	msg, err := natsio.GetServer().Request(subject.Order.ORNotUpdateStatus, toBytes(p))
+	if err != nil {
+		return err
+	}
+	var r model.CommonResponseData
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	return nil
+}
