@@ -33,3 +33,8 @@ type OrderUpdateLogisticInfoFailed struct {
 	ORCode  string `json:"orCode"`
 	Reason  string `json:"reason"`
 }
+
+// OrderORsNotUpdateStatus ...
+type OrderORsNotUpdateStatus struct {
+	ORCodes []string `json:"orCodes"`
+}
