@@ -12,7 +12,7 @@ type OutboundRequestPayload struct {
 	TPLCode      string                `json:"tplCode"`
 	Customer     CustomerInfo          `json:"customer"`
 	Items        []OutboundRequestItem `json:"items"`
-	Insurance    *InsuranceOpts
+	Insurance    *InsuranceOpts        `json:"insurance"`
 }
 
 // InsuranceOpts ...
