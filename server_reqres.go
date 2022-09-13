@@ -18,7 +18,11 @@ func (sv Server) Request(subject string, payload []byte) (*nats.Msg, error) {
 	if sv.Config.RequestTimeout > 0 {
 		timeout = sv.Config.RequestTimeout
 	}
-	return sv.instance.Request(subject, payload, timeout)
+	msg, err := sv.instance.Request(subject, payload, timeout)
+	if errors.Is(err, nats.ErrNoResponders) {
+		log.Printf("[NATS SERVER]: request - no responders for subject: %s", subject)
+	}
+	return msg, err
 }
 
 // Reply ...

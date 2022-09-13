@@ -17,6 +17,42 @@ func GetWarehouse() Warehouse {
 	return Warehouse{}
 }
 
+// AfterCreateWarehouse ...
+func (w Warehouse) AfterCreateWarehouse(p model.WarehouseNatsResponse) error {
+	msg, err := natsio.GetServer().Request(subject.Warehouse.AfterCreateWarehouse, toBytes(p))
+	if err != nil {
+		return err
+	}
+	var r struct {
+		Error string `json:"error"`
+	}
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	return nil
+}
+
+// AfterUpdateWarehouse ...
+func (w Warehouse) AfterUpdateWarehouse(p model.WarehouseNatsResponse) error {
+	msg, err := natsio.GetServer().Request(subject.Warehouse.AfterUpdateWarehouse, toBytes(p))
+	if err != nil {
+		return err
+	}
+	var r struct {
+		Error string `json:"error"`
+	}
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	return nil
+}
+
 // CreateOutboundRequest ...
 func (w Warehouse) CreateOutboundRequest(p model.OutboundRequestPayload) (*model.OutboundRequestResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.Warehouse.CreateOutboundRequest, toBytes(p))

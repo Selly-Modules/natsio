@@ -37,7 +37,55 @@ func (o Order) UpdateORStatus(p model.OrderUpdateORStatus) error {
 
 // CancelDelivery ...
 func (o Order) CancelDelivery(p model.OrderCancelDelivery) error {
-	msg, err := natsio.GetServer().Request(subject.Order.UpdateORStatus, toBytes(p))
+	msg, err := natsio.GetServer().Request(subject.Order.CancelDelivery, toBytes(p))
+	if err != nil {
+		return err
+	}
+	var r model.CommonResponseData
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	return nil
+}
+
+// ChangeDeliveryStatus ...
+func (o Order) ChangeDeliveryStatus(p model.OrderChangeDeliveryStatus) error {
+	msg, err := natsio.GetServer().Request(subject.Order.ChangeDeliveryStatus, toBytes(p))
+	if err != nil {
+		return err
+	}
+	var r model.CommonResponseData
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	return nil
+}
+
+// UpdateLogisticInfoFailed ...
+func (o Order) UpdateLogisticInfoFailed(p model.OrderUpdateLogisticInfoFailed) error {
+	msg, err := natsio.GetServer().Request(subject.Order.UpdateLogisticInfoFailed, toBytes(p))
+	if err != nil {
+		return err
+	}
+	var r model.CommonResponseData
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	return nil
+}
+
+// ORNotUpdateStatus ...
+func (o Order) ORNotUpdateStatus(p model.OrderORsNotUpdateStatus) error {
+	msg, err := natsio.GetServer().Request(subject.Order.ORNotUpdateStatus, toBytes(p))
 	if err != nil {
 		return err
 	}

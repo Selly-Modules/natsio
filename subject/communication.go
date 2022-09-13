@@ -7,13 +7,9 @@ func getCommunicationValue(val string) string {
 }
 
 var Communication = struct {
-	RequestHTTP       string
-	ResponseHTTP      string
-	WebhookTNC        string
-	WebhookGlobalCare string
+	RequestHTTP  string
+	ResponseHTTP string
 }{
-	RequestHTTP:       getCommunicationValue("request_http"),
-	ResponseHTTP:      getCommunicationValue("response_http"),
-	WebhookTNC:        getCommunicationValue("webhook_tnc"),
-	WebhookGlobalCare: getCommunicationValue("webhook_global_care"),
+	RequestHTTP:  getCommunicationValue("request_http"),
+	ResponseHTTP: getCommunicationValue("response_http"),
 }
