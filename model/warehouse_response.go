@@ -25,6 +25,20 @@ type WarehouseConfiguration struct {
 	Partner                 WarehousePartner  `json:"partner"`
 	Delivery                WarehouseDelivery `json:"delivery"`
 	Other                   WarehouseOther    `json:"other"`
+	Food                    WarehouseFood     `json:"food"`
+}
+
+// WarehouseFood ...
+type WarehouseFood struct {
+	ForceClosed bool        `json:"forceClosed"`
+	IsClosed    bool        `json:"isClosed"`
+	TimeRange   []TimeRange `json:"timeRange"`
+}
+
+// TimeRange ...
+type TimeRange struct {
+	From int64 `json:"from"`
+	To   int64 `json:"to"`
 }
 
 // WarehouseOther ...
@@ -109,6 +123,7 @@ type ResponseLatLng struct {
 type WarehouseNatsResponse struct {
 	ID             string                    `json:"_id"`
 	Staff          string                    `json:"staff"`
+	BusinessType   string                    `json:"businessType"`
 	Name           string                    `json:"name"`
 	SearchString   string                    `json:"searchString"`
 	Slug           string                    `json:"slug"`
