@@ -100,3 +100,21 @@ func (s Supplier) GetBankInfoByID(supplierID model.SupplierRequestPayload) (*mod
 
 	return r.Data, nil
 }
+
+// CreateWarehouseIntoServiceSupplier ...
+func (s Supplier) CreateWarehouseIntoServiceSupplier(p model.CreateSupplierWarehouseResponse) error {
+	msg, err := natsio.GetServer().Request(subject.Warehouse.CreateWarehouseIntoServiceSupplier, toBytes(p))
+	if err != nil {
+		return err
+	}
+	var r struct {
+		Error string `json:"error"`
+	}
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	return nil
+}
