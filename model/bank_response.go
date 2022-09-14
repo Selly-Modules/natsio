@@ -12,8 +12,6 @@ type BankBrief struct {
 	Name                     MultiLang `json:"name"`
 	ShortName                string    `json:"shortName"`
 	Active                   bool      `json:"active"`
-	CreatedAt                string    `json:"createdAt"`
-	UpdatedAt                string    `json:"updatedAt"`
 	BenBankName              string    `json:"benBankName"`
 	BankCode                 int       `json:"bankCode"`
 	IsBranchRequired         bool      `json:"isBranchRequired"`

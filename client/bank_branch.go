@@ -9,23 +9,23 @@ import (
 	"github.com/Selly-Modules/natsio/subject"
 )
 
-// Bank ...
-type Bank struct{}
+// BankBranch ...
+type BankBranch struct{}
 
-// GetBank ...
-func GetBank() Bank {
+// GetBankBranch ...
+func GetBankBranch() Bank {
 	return Bank{}
 }
 
-func (s Bank) GetBankById(bankID string) (*model.BankBrief, error) {
-	msg, err := natsio.GetServer().Request(subject.Bank.GetBankById, toBytes(bankID))
+func (s Bank) GetBankBranchById(bankBranchID string) (*model.BankBranchBrief, error) {
+	msg, err := natsio.GetServer().Request(subject.Bank.GetBankBranchById, toBytes(bankBranchID))
 	if err != nil {
 		return nil, err
 	}
 
 	var r struct {
-		Data  *model.BankBrief `json:"data"`
-		Error string           `json:"error"`
+		Data  *model.BankBranchBrief `json:"data"`
+		Error string                 `json:"error"`
 	}
 
 	if err = json.Unmarshal(msg.Data, &r); err != nil {

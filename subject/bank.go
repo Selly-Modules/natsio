@@ -7,7 +7,8 @@ func getBankValue(val string) string {
 }
 
 var Bank = struct {
-	GetBankById string
+	GetBankById       string
+	GetBankBranchById string
 }{
-	GetBankById: getBankValue("get_bank_by_id"),
+	GetBankBranchById: getBankValue("get_bank_by_id"),
 }

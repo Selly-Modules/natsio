@@ -120,3 +120,11 @@ type WarehouseNatsResponse struct {
 	CreatedAt      time.Time                 `json:"createdAt"`
 	UpdatedAt      time.Time                 `json:"updatedAt"`
 }
+
+type CreateSupplierWarehouseResponse struct {
+	Supplier     string `json:"supplier"`
+	Warehouse    string `json:"warehouse"`
+	ProvinceCode int    `json:"provinceCode"`
+	DistrictCode int    `json:"districtCode"`
+	WardCode     int    `json:"wardCode"`
+}
