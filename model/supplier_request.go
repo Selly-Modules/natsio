@@ -22,3 +22,11 @@ type SupplierRequestPayload struct {
 	PIC            string
 	ContractStatus string
 }
+
+type CreateSupplierWarehousePayload struct {
+	Supplier     string `json:"supplier"`
+	Warehouse    string `json:"warehouse"`
+	ProvinceCode int    `json:"provinceCode"`
+	DistrictCode int    `json:"districtCode"`
+	WardCode     int    `json:"wardCode"`
+}
