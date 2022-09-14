@@ -17,7 +17,7 @@ func GetBank() Bank {
 	return Bank{}
 }
 
-func (s Bank) GetBankInfoByID(bankID model.BankRequestPayload) (*model.BankBrief, error) {
+func (s Bank) GetBankById(bankID model.BankRequestPayload) (*model.BankBrief, error) {
 	msg, err := natsio.GetServer().Request(subject.Bank.GetBankById, toBytes(bankID))
 	if err != nil {
 		return nil, err
