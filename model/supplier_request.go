@@ -30,3 +30,11 @@ type CreateSupplierWarehousePayload struct {
 	DistrictCode int    `json:"districtCode"`
 	WardCode     int    `json:"wardCode"`
 }
+
+type UpdateSupplierWarehousePayload struct {
+	Supplier     string `json:"supplier"`
+	Warehouse    string `json:"warehouse"`
+	ProvinceCode int    `json:"provinceCode"`
+	DistrictCode int    `json:"districtCode"`
+	WardCode     int    `json:"wardCode"`
+}
