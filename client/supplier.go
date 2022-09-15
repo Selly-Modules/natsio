@@ -80,27 +80,6 @@ func (s Supplier) FindAll(supplierID model.SupplierRequestPayload) (*model.Suppl
 	return r.Data, nil
 }
 
-func (s Supplier) GetBankInfoByID(supplierID model.SupplierRequestPayload) (*model.SupplierAll, error) {
-	msg, err := natsio.GetServer().Request(subject.Supplier.FindAll, toBytes(supplierID))
-	if err != nil {
-		return nil, err
-	}
-
-	var r struct {
-		Data  *model.SupplierAll `json:"data"`
-		Error string             `json:"error"`
-	}
-
-	if err = json.Unmarshal(msg.Data, &r); err != nil {
-		return nil, err
-	}
-	if r.Error != "" {
-		return nil, errors.New(r.Error)
-	}
-
-	return r.Data, nil
-}
-
 // CreateWarehouseIntoServiceSupplier ...
 func (s Supplier) CreateWarehouseIntoServiceSupplier(p model.CreateSupplierWarehousePayload) error {
 	msg, err := natsio.GetServer().Request(subject.Warehouse.CreateWarehouseIntoServiceSupplier, toBytes(p))

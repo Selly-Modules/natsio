@@ -10,5 +10,6 @@ var Bank = struct {
 	GetBankById       string
 	GetBankBranchById string
 }{
-	GetBankBranchById: getBankValue("get_bank_by_id"),
+	GetBankById:       getBankValue("get_bank_by_id"),
+	GetBankBranchById: getBankValue("get_bank_branch_by_id"),
 }
