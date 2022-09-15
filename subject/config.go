@@ -7,6 +7,7 @@ var prefixes = struct {
 	Location      string
 	Bank          string
 	Supplier      string
+	Seller        string
 }{
 	Communication: "communication",
 	Order:         "order",
@@ -14,4 +15,5 @@ var prefixes = struct {
 	Location:      "location",
 	Supplier:      "supplier",
 	Bank:          "bank",
+	Seller:        "seller",
 }
