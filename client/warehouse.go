@@ -18,7 +18,7 @@ func GetWarehouse() Warehouse {
 }
 
 // UpdateIsClosedSupplier ...
-func (w Warehouse) UpdateIsClosedSupplier(p model.WarehouseNatsResponse) error {
+func (w Warehouse) UpdateIsClosedSupplier(p model.UpdateSupplierIsClosedRequest) error {
 	msg, err := natsio.GetServer().Request(subject.Warehouse.UpdateIsClosedSupplier, toBytes(p))
 	if err != nil {
 		return err
