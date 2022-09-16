@@ -69,3 +69,14 @@ type SyncORStatusRequest struct {
 	ORCode    string `json:"orCode"`
 	OrderCode string `json:"orderCode"`
 }
+
+// UpdateSupplierIsClosedRequest ...
+type UpdateSupplierIsClosedRequest struct {
+	Suppliers []SupplierIsClosed `json:"suppliers"`
+}
+
+// SupplierIsClosed ...
+type SupplierIsClosed struct {
+	Supplier string `json:"supplier"`
+	IsClosed bool   `json:"isClosed"`
+}
