@@ -17,7 +17,7 @@ func GetBankBranch() BankBranch {
 	return BankBranch{}
 }
 
-func (s Bank) GetBankBranchById(bankBranchID string) (*model.BankBranchBrief, error) {
+func (s BankBranch) GetBankBranchById(bankBranchID string) (*model.BankBranchBrief, error) {
 	msg, err := natsio.GetServer().Request(subject.Bank.GetBankBranchById, toBytes(bankBranchID))
 	if err != nil {
 		return nil, err
