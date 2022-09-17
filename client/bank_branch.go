@@ -13,8 +13,8 @@ import (
 type BankBranch struct{}
 
 // GetBankBranch ...
-func GetBankBranch() Bank {
-	return Bank{}
+func GetBankBranch() BankBranch {
+	return BankBranch{}
 }
 
 func (s Bank) GetBankBranchById(bankBranchID string) (*model.BankBranchBrief, error) {
