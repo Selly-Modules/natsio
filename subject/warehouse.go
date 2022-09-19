@@ -14,6 +14,7 @@ var Warehouse = struct {
 	SyncORStatus                  string
 	WebhookTNC                    string
 	WebhookGlobalCare             string
+	WebhookOnPoint                string
 	FindOne                       string
 	FindByCondition               string
 	Distinct                      string
@@ -30,6 +31,7 @@ var Warehouse = struct {
 	SyncORStatus:                  getWarehouseValue("sync_or_status"),
 	WebhookTNC:                    getWarehouseValue("webhook_tnc"),
 	WebhookGlobalCare:             getWarehouseValue("webhook_global_care"),
+	WebhookOnPoint:                getWarehouseValue("webhook_on_point"),
 	FindOne:                       getWarehouseValue("find_one"),
 	FindByCondition:               getWarehouseValue("find_all_by_condition"),
 	Distinct:                      getWarehouseValue("distinct"),
