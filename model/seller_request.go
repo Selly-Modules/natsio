@@ -6,3 +6,8 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 type GetSellerByIDRequest struct {
 	SellerID primitive.ObjectID `json:"sellerId"`
 }
+
+// GetListSellerByIDsRequest ...
+type GetListSellerByIDsRequest struct {
+	SellerIDs []primitive.ObjectID `json:"sellerIds"`
+}

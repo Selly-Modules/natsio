@@ -6,3 +6,8 @@ type ResponseSellerInfo struct {
 	Name string `json:"name"`
 	Code string `json:"code"`
 }
+
+// ResponseListSellerInfo ...
+type ResponseListSellerInfo struct {
+	Sellers []ResponseSellerInfo `json:"sellers"`
+}

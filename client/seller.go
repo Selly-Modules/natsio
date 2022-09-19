@@ -3,6 +3,7 @@ package client
 import (
 	"encoding/json"
 	"errors"
+
 	"github.com/Selly-Modules/natsio"
 	"github.com/Selly-Modules/natsio/model"
 	"github.com/Selly-Modules/natsio/subject"
@@ -36,5 +37,29 @@ func (s Seller) GetSellerInfoByID(p model.GetSellerByIDRequest) (*model.Response
 		return nil, errors.New(r.Error)
 	}
 
+	return r.Data, nil
+}
+
+// GetListSellerInfoByIDs ...
+func (s Seller) GetListSellerInfoByIDs(p model.GetListSellerByIDsRequest) (*model.ResponseListSellerInfo, error) {
+	msg, err := natsio.GetServer().Request(subject.Seller.GetListSellerInfoByIDs, toBytes(p))
+
+	if err != nil {
+		return nil, err
+	}
+
+	var r struct {
+		Data  *model.ResponseListSellerInfo `json:"data"`
+		Error string                        `json:"error"`
+	}
+
+	if err := json.Unmarshal(msg.Data, &r); err != nil {
+		return nil, err
+	}
+
+	if r.Error != "" {
+		return nil, errors.New(r.Error)
+
+	}
 	return r.Data, nil
 }
