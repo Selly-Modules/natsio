@@ -8,8 +8,16 @@ import (
 	"github.com/Selly-Modules/natsio/subject"
 )
 
+// News ...
+type News struct{}
+
+// GetNews ...
+func GetNews() News {
+	return News{}
+}
+
 // GetProductNoticesByInventory ...
-func (w Warehouse) GetProductNoticesByInventory(p model.GetProductNoticesByInventoryRequest) (*model.GetProductNoticesByInventoryResponse, error) {
+func (n News) GetProductNoticesByInventory(p model.GetProductNoticesByInventoryRequest) (*model.GetProductNoticesByInventoryResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.News.GetProductNoticesByInventory, bsonToBytes(p))
 	if err != nil {
 		return nil, err
