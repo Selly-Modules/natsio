@@ -3,7 +3,7 @@ package subject
 import "fmt"
 
 func getNewsValue(val string) string {
-	return fmt.Sprintf("%s.%s", prefixes.Order, val)
+	return fmt.Sprintf("%s.%s", prefixes.News, val)
 }
 
 var News = struct {
