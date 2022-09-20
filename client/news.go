@@ -18,7 +18,7 @@ func GetNews() News {
 
 // GetProductNoticesByInventory ...
 func (n News) GetProductNoticesByInventory(p model.GetProductNoticesByInventoryRequest) (*model.GetProductNoticesByInventoryResponse, error) {
-	msg, err := natsio.GetServer().Request(subject.News.GetProductNoticesByInventory, bsonToBytes(p))
+	msg, err := natsio.GetServer().Request(subject.News.GetProductNoticesByInventory, toBytes(p))
 	if err != nil {
 		return nil, err
 	}
