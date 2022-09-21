@@ -37,3 +37,19 @@ func (s Bank) GetBankById(bankID string) (*model.BankBrief, error) {
 
 	return r.Data, nil
 }
+
+func (s Bank) CheckBankAndBranchByID(p model.BankBranchRequest) bool {
+	msg, err := natsio.GetServer().Request(subject.Bank.CheckBankAndBranchByID, toBytes(p))
+	if err != nil {
+		return false
+	}
+
+	var r struct {
+		Error string `json:"error"`
+	}
+
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return false
+	}
+	return r.Error == ""
+}
