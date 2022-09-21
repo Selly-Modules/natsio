@@ -63,3 +63,26 @@ func (s Seller) GetListSellerInfoByIDs(p model.GetListSellerByIDsRequest) (*mode
 	}
 	return r.Data, nil
 }
+
+// GetListSellerInfoSupportChatByIDs ...
+func (s Seller) GetListSellerInfoSupportChatByIDs(p model.GetListSellerSupportChatByIDsRequest) (*model.ResponseListSellerInfoSupportChat, error) {
+	msg, err := natsio.GetServer().Request(subject.Seller.GetListSellerInfoSupportChatByIDs, toBytes(p))
+	if err != nil {
+		return nil, err
+	}
+
+	var r struct {
+		Data  *model.ResponseListSellerInfoSupportChat `json:"data"`
+		Error string                                   `json:"error"`
+	}
+
+	if err := json.Unmarshal(msg.Data, &r); err != nil {
+		return nil, err
+	}
+
+	if r.Error != "" {
+		return nil, errors.New(r.Error)
+
+	}
+	return r.Data, nil
+}

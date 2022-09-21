@@ -11,3 +11,8 @@ type GetSellerByIDRequest struct {
 type GetListSellerByIDsRequest struct {
 	SellerIDs []primitive.ObjectID `json:"sellerIds"`
 }
+
+// GetListSellerSupportChatByIDsRequest ...
+type GetListSellerSupportChatByIDsRequest struct {
+	SellerIDs []primitive.ObjectID `json:"sellerIds"`
+}
