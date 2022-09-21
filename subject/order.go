@@ -12,10 +12,12 @@ var Order = struct {
 	ChangeDeliveryStatus     string
 	UpdateLogisticInfoFailed string
 	ORNotUpdateStatus        string
+	GetSupplierOrders        string
 }{
 	UpdateORStatus:           getOrderValue("update_outbound_request_status"),
 	CancelDelivery:           getOrderValue("cancel_delivery"),
 	ChangeDeliveryStatus:     getOrderValue("change_delivery_status"),
 	UpdateLogisticInfoFailed: getOrderValue("update_logistic_info_failed"),
 	ORNotUpdateStatus:        getOrderValue("outbound_request_not_update_status"),
+	GetSupplierOrders:        getOrderValue("get_supplier_orders"),
 }
