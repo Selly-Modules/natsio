@@ -1,43 +1,93 @@
 package model
 
-type ResponseLocationAddress struct {
-	Province LocationProvince `json:"province"`
-	District LocationDistrict `json:"district"`
-	Ward     LocationWard     `json:"ward"`
-}
+import "time"
 
-// LocationProvince ...
-type LocationProvince struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-	Code int    `json:"code"`
-}
+type (
+	// ResponseLocationAddress ...
+	ResponseLocationAddress struct {
+		Province LocationProvince `json:"province"`
+		District LocationDistrict `json:"district"`
+		Ward     LocationWard     `json:"ward"`
+	}
 
-// LocationDistrict ...
-type LocationDistrict struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-	Code int    `json:"code"`
-}
+	// LocationProvince ...
+	LocationProvince struct {
+		ID             string `json:"id"`
+		Name           string `json:"name"`
+		Code           int    `json:"code"`
+		RegionCode     string `json:"regionCode"`
+		MainRegionCode string `json:"mainRegionCode"`
+	}
 
-// LocationWard ...
-type LocationWard struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-	Code int    `json:"code"`
-}
+	// LocationDistrict ...
+	LocationDistrict struct {
+		ID   string `json:"id"`
+		Name string `json:"name"`
+		Code int    `json:"code"`
+	}
 
-// LocationProvinceResponse ...
-type LocationProvinceResponse struct {
-	Provinces []LocationProvince `json:"provinces"`
-}
+	// LocationWard ...
+	LocationWard struct {
+		ID   string `json:"id"`
+		Name string `json:"name"`
+		Code int    `json:"code"`
+	}
 
-// LocationDistrictResponse ...
-type LocationDistrictResponse struct {
-	Districts []LocationDistrict `json:"districts"`
-}
+	// LocationProvinceResponse ...
+	LocationProvinceResponse struct {
+		Provinces []LocationProvince `json:"provinces"`
+	}
 
-// LocationWardResponse ...
-type LocationWardResponse struct {
-	Wards []LocationWard `json:"wards"`
-}
+	// LocationDistrictResponse ...
+	LocationDistrictResponse struct {
+		Districts []LocationDistrict `json:"districts"`
+	}
+
+	// LocationWardResponse ...
+	LocationWardResponse struct {
+		Wards []LocationWard `json:"wards"`
+	}
+
+	// LocationProvinceDetailResponse ...
+	LocationProvinceDetailResponse struct {
+		ID             string    `json:"_id"`
+		Name           string    `json:"name"`
+		SearchString   string    `json:"searchString"`
+		Slug           string    `json:"slug"`
+		Code           int       `json:"code"`
+		CountryCode    string    `json:"countryCode"`
+		RegionCode     string    `json:"regionCode"`
+		MainRegionCode string    `json:"mainRegionCode"`
+		TotalDistricts int       `json:"totalDistricts"`
+		TotalWards     int       `json:"totalWards"`
+		CreatedAt      time.Time `json:"createdAt"`
+		UpdatedAt      time.Time `json:"updatedAt"`
+	}
+
+	// LocationDistrictDetailResponse ...
+	LocationDistrictDetailResponse struct {
+		ID           string    `json:"_id"`
+		Name         string    `json:"name"`
+		SearchString string    `json:"searchString"`
+		Slug         string    `json:"slug"`
+		Code         int       `json:"code"`
+		ProvinceCode int       `json:"provinceCode"`
+		Area         int       `json:"area"`
+		TotalWards   int       `json:"totalWards"`
+		CreatedAt    time.Time `json:"createdAt"`
+		UpdatedAt    time.Time `json:"updatedAt"`
+	}
+
+	// LocationWardDetailResponse ...
+	LocationWardDetailResponse struct {
+		ID           string    `json:"_id"`
+		Name         string    `json:"name"`
+		SearchString string    `json:"searchString"`
+		Slug         string    `json:"slug"`
+		Code         int       `json:"code"`
+		DistrictCode int       `json:"districtCode"`
+		ProvinceCode int       `json:"provinceCode"`
+		CreatedAt    time.Time `json:"createdAt"`
+		UpdatedAt    time.Time `json:"updatedAt"`
+	}
+)
