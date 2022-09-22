@@ -11,12 +11,13 @@ type SupplierOrderList struct {
 
 // SupplierOrder ...
 type SupplierOrder struct {
-	ID        string                `json:"_id"`
-	Code      string                `json:"code"`
-	CreatedAt time.Time             `json:"createdAt"`
-	Status    string                `json:"status"`
-	Items     []SupplierOrderItem   `json:"items"`
-	Delivery  SupplierOrderDelivery `json:"delivery"`
+	ID              string                `json:"_id"`
+	Code            string                `json:"code"`
+	CreatedAt       time.Time             `json:"createdAt"`
+	Status          string                `json:"status"`
+	WarehouseStatus string                `json:"warehouseStatus"`
+	Items           []SupplierOrderItem   `json:"items"`
+	Delivery        SupplierOrderDelivery `json:"delivery"`
 }
 
 // SupplierOrderItem ...
