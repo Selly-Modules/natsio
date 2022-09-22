@@ -66,7 +66,7 @@ func (s Seller) GetListSellerInfoByIDs(p model.GetListSellerByIDsRequest) (*mode
 
 // GetListSellerInfoSupportChatByIDs ...
 func (s Seller) GetListSellerInfoSupportChatByIDs(p model.GetListSellerSupportChatByIDsRequest) (*model.ResponseListSellerInfoSupportChat, error) {
-	msg, err := natsio.GetServer().Request(subject.Seller.GetListSellerInfoSupportChatByIDs, toBytes(p))
+	msg, err := natsio.GetServer().Request(subject.SupportChat.GetListSellerInfoSupportChatByIDs, toBytes(p))
 	if err != nil {
 		return nil, err
 	}
