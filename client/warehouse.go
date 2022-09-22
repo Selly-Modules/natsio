@@ -17,6 +17,24 @@ func GetWarehouse() Warehouse {
 	return Warehouse{}
 }
 
+// UpdateIsClosedSupplier ...
+func (w Warehouse) UpdateIsClosedSupplier(p model.UpdateSupplierIsClosedRequest) error {
+	msg, err := natsio.GetServer().Request(subject.Warehouse.UpdateIsClosedSupplier, toBytes(p))
+	if err != nil {
+		return err
+	}
+	var r struct {
+		Error string `json:"error"`
+	}
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	return nil
+}
+
 // AfterCreateWarehouse ...
 func (w Warehouse) AfterCreateWarehouse(p model.WarehouseNatsResponse) error {
 	msg, err := natsio.GetServer().Request(subject.Warehouse.AfterCreateWarehouse, toBytes(p))
