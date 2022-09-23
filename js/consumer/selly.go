@@ -2,7 +2,9 @@ package jsconsumer
 
 // Selly ...
 var Selly = struct {
-	PushNotification string
+	PushNotification      string
+	UpdateSellerStatistic string
 }{
-	PushNotification: "PULL_PUSH_NOTIFICATION",
+	PushNotification:      "PULL_PUSH_NOTIFICATION",
+	UpdateSellerStatistic: "PULL_UPDATE_SELLER_STATISTIC",
 }
