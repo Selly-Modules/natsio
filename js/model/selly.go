@@ -1,10 +1,10 @@
-package model
+package jsmodel
 
-// PayloadPushNotification ...
-type PayloadPushNotification struct {
+// PushNotification ...
+type PushNotification struct {
 	User        string `json:"user"`
 	Type        string `json:"type"`
-	TargetId    string `json:"targetId"`
+	TargetID    string `json:"targetId"`
 	IsFromAdmin bool   `json:"isFromAdmin"`
 	Category    string `json:"category"`
 	Options     struct {
