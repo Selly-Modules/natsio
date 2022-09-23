@@ -11,9 +11,9 @@ func getSellyValue(val string) string {
 
 // Selly ...
 var Selly = struct {
-	PushNotification      string
-	UpdateSellerStatistic string
+	PushNotification               string
+	UpdateSellerAffiliateStatistic string
 }{
-	PushNotification:      getSellyValue("push_notifications"),
-	UpdateSellerStatistic: getSellyValue("update_seller_statistic"),
+	PushNotification:               getSellyValue("push_notifications"),
+	UpdateSellerAffiliateStatistic: getSellyValue("update_seller_affiliate_statistic"),
 }
