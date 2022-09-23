@@ -11,9 +11,7 @@ func getSellyValue(val string) string {
 
 // Selly ...
 var Selly = struct {
-	Stream           string
 	PushNotification string
 }{
-	Stream:           prefixes.Selly,
 	PushNotification: getSellyValue("push_notifications"),
 }
