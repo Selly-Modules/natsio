@@ -34,3 +34,26 @@ type SellerAffiliateStatistic struct {
 	CommissionTransactionApproved float64 `json:"commissionTransactionApproved"`
 	CommissionTransactionRejected float64 `json:"commissionTransactionRejected"`
 }
+
+// PayloadCashflowsBySeller ...
+type PayloadCashflowsBySeller struct {
+	SellerID string           `json:"sellerId"`
+	List     []CashflowSeller `json:"list"`
+}
+
+// CashflowSeller ...
+type CashflowSeller struct {
+	Value      float64          `json:"value"`
+	Action     string           `json:"action"`
+	Category   string           `json:"category"`
+	TargetID   string           `json:"targetId"`
+	TargetType string           `json:"targetType"`
+	Options    *CashFlowOptions `json:"options"`
+}
+
+// CashFlowOptions ...
+type CashFlowOptions struct {
+	AffiliateTransactionCode string `json:"affiliateTransactionCode,omitempty"`
+	AffiliateCampaignID      string `json:"affiliateCampaignId,omitempty"`
+	AffiliateCampaignName    string `json:"affiliateCampaignName,omitempty"`
+}
