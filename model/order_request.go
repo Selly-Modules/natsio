@@ -38,3 +38,13 @@ type OrderUpdateLogisticInfoFailed struct {
 type OrderORsNotUpdateStatus struct {
 	ORCodes []string `json:"orCodes"`
 }
+
+// OrderSupplierQuery ...
+type OrderSupplierQuery struct {
+	Limit        int64    `json:"limit"`
+	Page         int64    `json:"page"`
+	FromDate     string   `json:"fromDate"`
+	ToDate       string   `json:"toDate"`
+	SupplierID   string   `json:"supplierId"`
+	WarehouseIDs []string `json:"warehouseIDs"`
+}

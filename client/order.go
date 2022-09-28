@@ -98,3 +98,24 @@ func (o Order) ORNotUpdateStatus(p model.OrderORsNotUpdateStatus) error {
 	}
 	return nil
 }
+
+// GetSupplierOrders ...
+func (o Order) GetSupplierOrders(p model.OrderSupplierQuery) (*model.SupplierOrderList, error) {
+	msg, err := natsio.GetServer().Request(subject.Order.GetSupplierOrders, toBytes(p))
+	if err != nil {
+		return nil, err
+	}
+	var (
+		r struct {
+			Data  model.SupplierOrderList `json:"data"`
+			Error string                  `json:"error"`
+		}
+	)
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return nil, err
+	}
+	if r.Error != "" {
+		return nil, errors.New(r.Error)
+	}
+	return &r.Data, nil
+}
