@@ -24,6 +24,7 @@ var Warehouse = struct {
 	UpdateIsClosedSupplier        string
 	CreateWarehouseIntoServiceSupplier string
 	UpdateWarehouseIntoServiceSupplier string
+	GetWarehouses                 string
 }{
 	AfterCreateWarehouse:          getWarehouseValue("after_create_warehouse"),
 	AfterUpdateWarehouse:          getWarehouseValue("after_update_warehouse"),
@@ -42,4 +43,5 @@ var Warehouse = struct {
 	UpdateIsClosedSupplier:        getWarehouseValue("update_is_closed_supplier"),
 	CreateWarehouseIntoServiceSupplier: getWarehouseValue("create_warehouse_into_service_supplier"),
 	UpdateWarehouseIntoServiceSupplier: getWarehouseValue("update_warehouse_into_service_supplier"),
+	GetWarehouses:                 getWarehouseValue("get_warehouses"),
 }
