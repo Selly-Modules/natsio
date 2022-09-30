@@ -32,6 +32,7 @@ type SellerAffiliateStatistic struct {
 	CommissionTransactionTotal    float64 `json:"commissionTransactionTotal"`
 	CommissionTransactionCashback float64 `json:"commissionTransactionCashback"`
 	CommissionTransactionApproved float64 `json:"commissionTransactionApproved"`
+	CommissionTransactionPending  float64 `json:"commissionTransactionPending"`
 	CommissionTransactionRejected float64 `json:"commissionTransactionRejected"`
 }
 
