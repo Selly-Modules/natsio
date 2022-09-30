@@ -144,3 +144,22 @@ func (w Warehouse) GetConfigByWarehouseID(warehouseID string) (*model.WarehouseC
 	}
 	return r.Data, nil
 }
+
+// GetWarehouses ...
+func (w Warehouse) GetWarehouses(p model.GetWarehousesRequest) (*model.GetWarehousesResponse, error) {
+	msg, err := natsio.GetServer().Request(subject.Warehouse.GetWarehouses, toBytes(p))
+	if err != nil {
+		return nil, err
+	}
+	var r struct {
+		Data  *model.GetWarehousesResponse `json:"data"`
+		Error string                       `json:"error"`
+	}
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return nil, err
+	}
+	if r.Error != "" {
+		return nil, errors.New(r.Error)
+	}
+	return r.Data, nil
+}
