@@ -87,3 +87,14 @@ type SupplierIsClosed struct {
 	Supplier string `json:"supplier"`
 	IsClosed bool   `json:"isClosed"`
 }
+
+// GetWarehousesRequest ...
+type GetWarehousesRequest struct {
+	Keyword      string `json:"keyword"`
+	Status       string `json:"status"`
+	Supplier     string `json:"supplier"`
+	BusinessType string `json:"businessType"`
+
+	Page  int64 `json:"page"`
+	Limit int64 `json:"limit"`
+}
