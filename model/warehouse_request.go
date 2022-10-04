@@ -17,6 +17,7 @@ type OutboundRequestPayload struct {
 
 // InsuranceOpts ...
 type InsuranceOpts struct {
+	InsuranceType    string `json:"insuranceType"`
 	VehicleTypeID    string `json:"vehicleTypeId"`
 	VehicleTypeName  string `json:"vehicleTypeName"`
 	InsuranceTypeID  string `json:"insuranceTypeId"`
@@ -25,6 +26,12 @@ type InsuranceOpts struct {
 	Chassis          string `json:"chassis"`
 	Engine           string `json:"engine"`
 	BeginDate        string `json:"beginDate"`
+
+	// For car insurance
+	NumberOfSeatsCarOccupantAccidentInsurance int    `json:"numberOfSeatsCarOccupantAccidentInsurance"`
+	NumberOfSeats                             int    `json:"numberOfSeats"`
+	NumberOfSeatsOrTonnageId                  string `json:"numberOfSeatsOrTonnageId"`
+	NumberOfSeatsOrTonnageName                string `json:"numberOfSeatsOrTonnageName"`
 }
 
 // OutboundRequestItem ...
