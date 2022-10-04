@@ -17,6 +17,7 @@ type OutboundRequestPayload struct {
 
 // InsuranceOpts ...
 type InsuranceOpts struct {
+	InsuranceType    string `json:"insuranceType"`
 	VehicleTypeID    string `json:"vehicleTypeId"`
 	VehicleTypeName  string `json:"vehicleTypeName"`
 	InsuranceTypeID  string `json:"insuranceTypeId"`
@@ -25,6 +26,12 @@ type InsuranceOpts struct {
 	Chassis          string `json:"chassis"`
 	Engine           string `json:"engine"`
 	BeginDate        string `json:"beginDate"`
+
+	// For car insurance
+	NumberOfSeatsCarOccupantAccidentInsurance int    `json:"numberOfSeatsCarOccupantAccidentInsurance"`
+	NumberOfSeats                             int    `json:"numberOfSeats"`
+	NumberOfSeatsOrTonnageId                  string `json:"numberOfSeatsOrTonnageId"`
+	NumberOfSeatsOrTonnageName                string `json:"numberOfSeatsOrTonnageName"`
 }
 
 // OutboundRequestItem ...
@@ -71,4 +78,26 @@ type CancelOutboundRequest struct {
 type SyncORStatusRequest struct {
 	ORCode    string `json:"orCode"`
 	OrderCode string `json:"orderCode"`
+}
+
+// UpdateSupplierIsClosedRequest ...
+type UpdateSupplierIsClosedRequest struct {
+	Suppliers []SupplierIsClosed `json:"suppliers"`
+}
+
+// SupplierIsClosed ...
+type SupplierIsClosed struct {
+	Supplier string `json:"supplier"`
+	IsClosed bool   `json:"isClosed"`
+}
+
+// GetWarehousesRequest ...
+type GetWarehousesRequest struct {
+	Keyword      string `json:"keyword"`
+	Status       string `json:"status"`
+	Supplier     string `json:"supplier"`
+	BusinessType string `json:"businessType"`
+
+	Page  int64 `json:"page"`
+	Limit int64 `json:"limit"`
 }

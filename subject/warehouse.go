@@ -21,6 +21,8 @@ var Warehouse = struct {
 	Count                         string
 	AfterUpdateWarehouse          string
 	AfterCreateWarehouse          string
+	UpdateIsClosedSupplier        string
+	GetWarehouses                 string
 }{
 	AfterCreateWarehouse:          getWarehouseValue("after_create_warehouse"),
 	AfterUpdateWarehouse:          getWarehouseValue("after_update_warehouse"),
@@ -36,4 +38,6 @@ var Warehouse = struct {
 	FindByCondition:               getWarehouseValue("find_all_by_condition"),
 	Distinct:                      getWarehouseValue("distinct"),
 	Count:                         getWarehouseValue("count"),
+	UpdateIsClosedSupplier:        getWarehouseValue("update_is_closed_supplier"),
+	GetWarehouses:                 getWarehouseValue("get_warehouses"),
 }

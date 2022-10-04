@@ -2,8 +2,9 @@ package model
 
 // ResponseSupplierInfo ...
 type ResponseSupplierInfo struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+	ID           string `json:"id"`
+	Name         string `json:"name"`
+	BusinessType string `json:"businessType"`
 }
 
 // ResponseSupplierContract ...
@@ -16,11 +17,12 @@ type ResponseSupplierContract struct {
 
 // SupplierBrief ...
 type SupplierBrief struct {
-	ID        string `json:"_id"`
-	Name      string `json:"name"`
-	Status    string `json:"status"`
-	CreatedAt string `json:"createdAt"`
-	UpdatedAt string `json:"updatedAt"`
+	ID           string `json:"_id"`
+	Name         string `json:"name"`
+	Status       string `json:"status"`
+	BusinessType string `json:"businessType"`
+	CreatedAt    string `json:"createdAt"`
+	UpdatedAt    string `json:"updatedAt"`
 }
 
 type SupplierAll struct {

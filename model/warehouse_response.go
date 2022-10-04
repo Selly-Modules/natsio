@@ -25,6 +25,20 @@ type WarehouseConfiguration struct {
 	Partner                 WarehousePartner  `json:"partner"`
 	Delivery                WarehouseDelivery `json:"delivery"`
 	Other                   WarehouseOther    `json:"other"`
+	Food                    WarehouseFood     `json:"food"`
+}
+
+// WarehouseFood ...
+type WarehouseFood struct {
+	ForceClosed bool        `json:"forceClosed"`
+	IsClosed    bool        `json:"isClosed"`
+	TimeRange   []TimeRange `json:"timeRange"`
+}
+
+// TimeRange ...
+type TimeRange struct {
+	From int64 `json:"from"`
+	To   int64 `json:"to"`
 }
 
 // WarehouseOther ...
@@ -109,6 +123,7 @@ type ResponseLatLng struct {
 type WarehouseNatsResponse struct {
 	ID             string                    `json:"_id"`
 	Staff          string                    `json:"staff"`
+	BusinessType   string                    `json:"businessType"`
 	Name           string                    `json:"name"`
 	SearchString   string                    `json:"searchString"`
 	Slug           string                    `json:"slug"`
@@ -119,4 +134,31 @@ type WarehouseNatsResponse struct {
 	Configurations WarehouseConfiguration    `json:"configurations"`
 	CreatedAt      time.Time                 `json:"createdAt"`
 	UpdatedAt      time.Time                 `json:"updatedAt"`
+}
+
+// WarehouseInfo ...
+type WarehouseInfo struct {
+	ID           string                    `json:"_id"`
+	Name         string                    `json:"name"`
+	BusinessType string                    `json:"businessType"`
+	Status       string                    `json:"status"`
+	Slug         string                    `json:"slug"`
+	Supplier     WarehouseSupplierInfo     `json:"supplier"`
+	Location     ResponseWarehouseLocation `json:"location"`
+	Contact      ResponseWarehouseContact  `json:"contact"`
+	CreatedAt    string                    `json:"createdAt"`
+	UpdatedAt    string                    `json:"updatedAt"`
+}
+
+// WarehouseSupplierInfo ...
+type WarehouseSupplierInfo struct {
+	ID   string `json:"_id"`
+	Name string `json:"name"`
+}
+
+// GetWarehousesResponse ...
+type GetWarehousesResponse struct {
+	Total int64           `json:"total"`
+	Limit int64           `json:"limit"`
+	List  []WarehouseInfo `json:"list"`
 }
