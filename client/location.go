@@ -128,7 +128,7 @@ func (l Location) GetProvinceByCondition(p model.ProvinceRequestCondition) (*mod
 }
 
 // GetProvincesByCondition ...
-func (l Location) GetProvincesByCondition(p model.DistrictRequestCondition) ([]*model.LocationProvinceDetailResponse, error) {
+func (l Location) GetProvincesByCondition(p model.ProvinceRequestCondition) ([]*model.LocationProvinceDetailResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.Location.GetProvincesByCondition, toBytes(p))
 	if err != nil {
 		return nil, err
@@ -150,7 +150,7 @@ func (l Location) GetProvincesByCondition(p model.DistrictRequestCondition) ([]*
 }
 
 // GetDistrictByCondition ...
-func (l Location) GetDistrictByCondition(p model.ProvinceRequestCondition) (*model.LocationProvinceDetailResponse, error) {
+func (l Location) GetDistrictByCondition(p model.DistrictRequestCondition) (*model.LocationProvinceDetailResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.Location.GetDistrictByCondition, toBytes(p))
 	if err != nil {
 		return nil, err
@@ -172,7 +172,7 @@ func (l Location) GetDistrictByCondition(p model.ProvinceRequestCondition) (*mod
 }
 
 // GetDistrictsByCondition ...
-func (l Location) GetDistrictsByCondition(p model.ProvinceRequestCondition) ([]*model.LocationDistrictDetailResponse, error) {
+func (l Location) GetDistrictsByCondition(p model.DistrictRequestCondition) ([]*model.LocationDistrictDetailResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.Location.GetDistrictsByCondition, toBytes(p))
 	if err != nil {
 		return nil, err
@@ -194,7 +194,7 @@ func (l Location) GetDistrictsByCondition(p model.ProvinceRequestCondition) ([]*
 }
 
 // GetWardByCondition ...
-func (l Location) GetWardByCondition(p model.DistrictRequestCondition) (*model.LocationWardDetailResponse, error) {
+func (l Location) GetWardByCondition(p model.WardRequestCondition) (*model.LocationWardDetailResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.Location.GetWardByCondition, toBytes(p))
 	if err != nil {
 		return nil, err
@@ -216,7 +216,7 @@ func (l Location) GetWardByCondition(p model.DistrictRequestCondition) (*model.L
 }
 
 // GetWardsByCondition ...
-func (l Location) GetWardsByCondition(p model.ProvinceRequestCondition) ([]*model.LocationWardDetailResponse, error) {
+func (l Location) GetWardsByCondition(p model.WardRequestCondition) ([]*model.LocationWardDetailResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.Location.GetWardsByCondition, toBytes(p))
 	if err != nil {
 		return nil, err
@@ -238,7 +238,7 @@ func (l Location) GetWardsByCondition(p model.ProvinceRequestCondition) ([]*mode
 }
 
 // CountProvinceByCondition ...
-func (l Location) CountProvinceByCondition(p model.WardRequestCondition) (int64, error) {
+func (l Location) CountProvinceByCondition(p model.ProvinceRequestCondition) (int64, error) {
 	msg, err := natsio.GetServer().Request(subject.Location.CountProvinceByCondition, toBytes(p))
 	if err != nil {
 		return 0, err
@@ -257,7 +257,7 @@ func (l Location) CountProvinceByCondition(p model.WardRequestCondition) (int64,
 }
 
 // CountDistrictByCondition ...
-func (l Location) CountDistrictByCondition(p model.FindWithCondition) (int64, error) {
+func (l Location) CountDistrictByCondition(p model.DistrictRequestCondition) (int64, error) {
 	msg, err := natsio.GetServer().Request(subject.Location.CountDistrictByCondition, toBytes(p))
 	if err != nil {
 		return 0, err
@@ -276,7 +276,7 @@ func (l Location) CountDistrictByCondition(p model.FindWithCondition) (int64, er
 }
 
 // CountWardByCondition ...
-func (l Location) CountWardByCondition(p model.FindWithCondition) (int64, error) {
+func (l Location) CountWardByCondition(p model.WardRequestCondition) (int64, error) {
 	msg, err := natsio.GetServer().Request(subject.Location.CountWardByCondition, toBytes(p))
 	if err != nil {
 		return 0, err
