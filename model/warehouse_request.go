@@ -66,6 +66,7 @@ type UpdateOutboundRequestLogisticInfoPayload struct {
 	TrackingCode  string `json:"trackingCode"`
 	ORCode        string `json:"orCode"`
 	TPLCode       string `json:"tplCode"`
+	OrderCode     string `json:"orderCode"`
 }
 
 // CancelOutboundRequest ...
