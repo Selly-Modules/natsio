@@ -66,19 +66,21 @@ type UpdateOutboundRequestLogisticInfoPayload struct {
 	TrackingCode  string `json:"trackingCode"`
 	ORCode        string `json:"orCode"`
 	TPLCode       string `json:"tplCode"`
-	OrderCode     string `json:"orderCode"`
+	OrderID       string `json:"orderId"`
 }
 
 // CancelOutboundRequest ...
 type CancelOutboundRequest struct {
-	ORCode string `json:"orCode"`
-	Note   string `json:"note"`
+	ORCode  string `json:"orCode"`
+	OrderID string `json:"orderId"`
+	Note    string `json:"note"`
 }
 
 // SyncORStatusRequest ...
 type SyncORStatusRequest struct {
 	ORCode    string `json:"orCode"`
 	OrderCode string `json:"orderCode"`
+	OrderID   string `json:"orderId"`
 }
 
 // UpdateSupplierIsClosedRequest ...
