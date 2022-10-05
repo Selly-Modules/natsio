@@ -26,9 +26,9 @@ type (
 
 	// DistrictRequestCondition ...
 	DistrictRequestCondition struct {
-		Code         int `json:"code"`
-		Codes        int `json:"codes"`
-		ProvinceCode int `json:"provinceCode"`
+		Code         int   `json:"code"`
+		Codes        []int `json:"codes"`
+		ProvinceCode int   `json:"provinceCode"`
 	}
 
 	// WardRequestPayload ...
