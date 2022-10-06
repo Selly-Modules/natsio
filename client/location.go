@@ -293,3 +293,22 @@ func (l Location) CountWardByCondition(p model.WardRequestCondition) (int64, err
 	}
 	return r.Data, nil
 }
+
+// DistinctWithField ...
+func (l Location) DistinctWithField(p model.ProvinceDistinctWithField) ([]interface{}, error) {
+	msg, err := natsio.GetServer().Request(subject.Location.ProvinceDistinctWithField, toBytes(p))
+	if err != nil {
+		return nil, err
+	}
+	var r struct {
+		Data  []interface{} `json:"data"`
+		Error string        `json:"error"`
+	}
+	if err = json.Unmarshal(msg.Data, &r); err != nil {
+		return nil, err
+	}
+	if r.Error != "" {
+		return nil, errors.New(r.Error)
+	}
+	return r.Data, nil
+}
