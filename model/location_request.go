@@ -15,10 +15,12 @@ type (
 
 	// ProvinceRequestCondition ...
 	ProvinceRequestCondition struct {
-		Code  int      `json:"code"`
-		Codes []int    `json:"codes"`
-		Slug  string   `json:"slug"`
-		Slugs []string `json:"slugs"`
+		Code    int      `json:"code"`
+		Codes   []int    `json:"codes"`
+		Slug    string   `json:"slug"`
+		Slugs   []string `json:"slugs"`
+		Keyword string   `json:"keyword"`
+		Region  string   `json:"region"`
 	}
 
 	// DistrictRequestPayload ...
@@ -33,6 +35,7 @@ type (
 		ProvinceCode int    `json:"provinceCode"`
 		Slug         string `json:"slug"`
 		ProvinceSlug string `json:"provinceSlug"`
+		Keyword      string `json:"keyword"`
 	}
 
 	// WardRequestPayload ...
