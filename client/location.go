@@ -150,14 +150,14 @@ func (l Location) GetProvincesByCondition(p model.ProvinceRequestCondition) ([]*
 }
 
 // GetDistrictByCondition ...
-func (l Location) GetDistrictByCondition(p model.DistrictRequestCondition) (*model.LocationProvinceDetailResponse, error) {
+func (l Location) GetDistrictByCondition(p model.DistrictRequestCondition) (*model.LocationDistrictDetailResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.Location.GetDistrictByCondition, toBytes(p))
 	if err != nil {
 		return nil, err
 	}
 
 	var r struct {
-		Data  *model.LocationProvinceDetailResponse `json:"data"`
+		Data  *model.LocationDistrictDetailResponse `json:"data"`
 		Error string                                `json:"error"`
 	}
 
