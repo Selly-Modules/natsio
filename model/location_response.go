@@ -54,6 +54,7 @@ type (
 		Name           string    `json:"name"`
 		SearchString   string    `json:"searchString"`
 		Slug           string    `json:"slug"`
+		OldSlug        string    `json:"oldSlug"`
 		Code           int       `json:"code"`
 		CountryCode    string    `json:"countryCode"`
 		RegionCode     string    `json:"regionCode"`
@@ -70,6 +71,7 @@ type (
 		Name         string    `json:"name"`
 		SearchString string    `json:"searchString"`
 		Slug         string    `json:"slug"`
+		OldSlug      string    `json:"oldSlug"`
 		Code         int       `json:"code"`
 		ProvinceCode int       `json:"provinceCode"`
 		Area         int       `json:"area"`
@@ -84,6 +86,7 @@ type (
 		Name         string    `json:"name"`
 		SearchString string    `json:"searchString"`
 		Slug         string    `json:"slug"`
+		OldSlugs     []string  `json:"oldSlugs"`
 		Code         int       `json:"code"`
 		DistrictCode int       `json:"districtCode"`
 		ProvinceCode int       `json:"provinceCode"`
