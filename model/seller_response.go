@@ -21,16 +21,25 @@ type ResponseListSellerInfoSupportChat struct {
 
 // ResponseSellerInfoSupportChat ...
 type ResponseSellerInfoSupportChat struct {
-	ID           string               `json:"_id"`
-	Name         string               `json:"name"`
-	Code         string               `json:"code"`
-	Membership   SellerMembershipInfo `json:"membership"`
-	Info         SellerContactInfo    `json:"info"`
-	Team         *TeamInfo            `json:"team,omitempty"`
-	Statistic    SellerStatistic      `json:"statistic"`
-	TrackingTime *SellerTrackingTime  `json:"trackingTime"`
-	Invitee      *InviteeInfo         `json:"invitee"`
-	CreatedAt    time.Time            `json:"createdAt"`
+	ID           string                 `json:"_id"`
+	Name         string                 `json:"name"`
+	Code         string                 `json:"code"`
+	Membership   SellerMembershipInfo   `json:"membership"`
+	Info         SellerContactInfo      `json:"info"`
+	Team         *TeamInfo              `json:"team,omitempty"`
+	Statistic    SellerStatistic        `json:"statistic"`
+	TrackingTime *SellerTrackingTime    `json:"trackingTime"`
+	Invitee      *InviteeInfo           `json:"invitee"`
+	CreatedAt    time.Time              `json:"createdAt"`
+	PlanPackage  *SellerPlanPackageInfo `json:"planPackage"`
+}
+
+// SellerPlanPackageInfo ...
+type SellerPlanPackageInfo struct {
+	ID        string    `json:"_id"`
+	Name      string    `json:"name"`
+	Level     int       `json:"level"`
+	CreatedAt time.Time `json:"createdAt"`
 }
 
 // SellerTrackingTime ...
