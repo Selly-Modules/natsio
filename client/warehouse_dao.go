@@ -71,8 +71,10 @@ func (w Warehouse) CountByCondition(p model.FindWithCondition) (int64, error) {
 func (w Warehouse) FindByCondition(p model.FindWithCondition) ([]*model.WarehouseNatsResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.Warehouse.FindByCondition, bsonToBytes(p))
 	log.Println("-----------")
-	log.Println("find_warehouse: ", string(msg.Data), err)
-	log.Printf("%+v\n", msg)
+	log.Printf("find_warehouse: %+v, %v\n", msg, err)
+	if msg != nil {
+		log.Printf("find_warehouse_response: %s\n", string(msg.Data))
+	}
 	if err != nil {
 		return nil, err
 	}
