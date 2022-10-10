@@ -3,7 +3,6 @@ package client
 import (
 	"encoding/json"
 	"errors"
-	"log"
 
 	"github.com/Selly-Modules/natsio"
 	"github.com/Selly-Modules/natsio/model"
@@ -70,11 +69,6 @@ func (w Warehouse) CountByCondition(p model.FindWithCondition) (int64, error) {
 // FindByCondition ...
 func (w Warehouse) FindByCondition(p model.FindWithCondition) ([]*model.WarehouseNatsResponse, error) {
 	msg, err := natsio.GetServer().Request(subject.Warehouse.FindByCondition, bsonToBytes(p))
-	log.Println("-----------")
-	log.Printf("find_warehouse: %+v, %v\n", msg, err)
-	if msg != nil {
-		log.Printf("find_warehouse_response: %s\n", string(msg.Data))
-	}
 	if err != nil {
 		return nil, err
 	}
